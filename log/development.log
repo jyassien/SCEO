@@ -100,3 +100,23 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.1ms | Allocations: 1880)
 
 
+Started GET "/" for 192.168.65.1 at 2024-11-25 05:10:57 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 13)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 200)
+
+
+Started GET "/rails/info/routes" for 192.168.65.1 at 2024-11-25 05:11:04 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /usr/local/bundle/gems/railties-7.1.5/lib/rails/templates/layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/railties-7.1.5/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-7.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb [35 times] (Duration: 8.2ms | Allocations: 9026)
+  Rendered /usr/local/bundle/gems/actionpack-7.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 3.0ms | Allocations: 900)
+  Rendered /usr/local/bundle/gems/railties-7.1.5/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 18.5ms | Allocations: 13600)
+  Rendered layout /usr/local/bundle/gems/railties-7.1.5/lib/rails/templates/layouts/application.html.erb (Duration: 19.9ms | Allocations: 13877)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.0ms | Allocations: 14421)
+
+
