@@ -326,3 +326,50 @@ Processing by EventsController#new as HTML
 Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 2805)
 
 
+Started GET "/events/new" for 192.168.65.1 at 2024-11-25 05:33:20 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 10.3ms | Allocations: 2204)
+  Rendered events/new.html.erb within layouts/application (Duration: 18.3ms | Allocations: 2488)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 3607)
+Completed 200 OK in 51ms (Views: 29.1ms | ActiveRecord: 3.8ms | Allocations: 9780)
+
+
+Started GET "/events" for 192.168.65.1 at 2024-11-25 05:33:22 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:6
+  Rendered events/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 867)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 1760)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 2128)
+
+
+Started GET "/events" for 192.168.65.1 at 2024-11-25 05:33:24 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:6
+  Rendered events/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 564)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 1457)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.2ms | Allocations: 1700)
+
+
+Started GET "/events" for 192.168.65.1 at 2024-11-25 05:33:26 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:6
+  Rendered events/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 570)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 1463)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.1ms | Allocations: 1706)
+
+
