@@ -397,3 +397,42 @@ Migrating to AddFlagsCountToEvents (20241125054129)
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241125054129') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/1" for 192.168.65.1 at 2024-11-25 06:10:18 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 299)
+  Rendered users/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2747)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 3927)
+Completed 200 OK in 39ms (Views: 11.3ms | ActiveRecord: 2.6ms | Allocations: 24710)
+
+
+Started GET "/events" for 192.168.65.1 at 2024-11-25 06:10:29 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:6
+  Rendered events/index.html.erb within layouts/application (Duration: 17.0ms | Allocations: 935)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 1466)
+Completed 200 OK in 41ms (Views: 22.2ms | ActiveRecord: 0.7ms | Allocations: 3356)
+
+
+Started GET "/flags" for 192.168.65.1 at 2024-11-25 06:10:32 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by FlagsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flags/index.html.erb within layouts/application
+  [1m[36mFlag Load (0.4ms)[0m  [1m[34mSELECT "flags".* FROM "flags"[0m
+  ↳ app/views/flags/index.html.erb:6
+  Rendered flags/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 898)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 1429)
+Completed 200 OK in 13ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 3710)
+
+
