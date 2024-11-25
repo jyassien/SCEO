@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reason: MyString
+  description: MyText
+  flagged_at: 2024-11-25 05:38:00
+  user: one
+  event: one
+
+two:
+  reason: MyString
+  description: MyText
+  flagged_at: 2024-11-25 05:38:00
+  user: two
+  event: two

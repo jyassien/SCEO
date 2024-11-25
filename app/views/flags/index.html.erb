@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Flags</h1>
+
+<div id="flags">
+  <% @flags.each do |flag| %>
+    <%= render flag %>
+    <p>
+      <%= link_to "Show this flag", flag %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New flag", new_flag_path %>
