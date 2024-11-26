@@ -22,10 +22,10 @@ VALID_REASONS = ["Inappropriate Content", "Spam", "Misleading Information", "Off
 10.times do |i|
   user = User.create!(
     username: "user#{i + 1}",
-    email: "user#{i + 1}@msudenver.edu",   # Ensure the email is unique by using the index
-    password: "password",  # Default password
-    user_type: ["admin", "professor", "student"].sample,  # Random user type
-    college_name: Faker::University.name,  # Random college name
+    email: "user#{i + 1}@msudenver.edu", 
+    password: "password",  c
+    user_type: ["admin", "professor", "student"].sample,  c
+    college_name: Faker::University.name,  c
   )
 
   # Create 3 events for each user
@@ -36,19 +36,19 @@ VALID_REASONS = ["Inappropriate Content", "Spam", "Misleading Information", "Off
       location: Faker::Address.city,
       start_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1.month),
       end_time: Faker::Time.between(from: DateTime.now + 1.month, to: DateTime.now + 2.months),
-      status: ["scheduled", "completed", "cancelled"].sample,  # Random event status
-      user: user,  # Associating event with user
-      flags_count: 0,  # Initial flags count
+      status: ["scheduled", "completed", "cancelled"].sample,  
+      user: user,  
+      flags_count: 0, 
     )
 
     # Create 2 flags for each event
     2.times do
       Flag.create!(
-        reason: [:inappropriate, :illegal, :safety_concern, :other].sample,  # Randomly select a valid reason from the list
+        reason: [:inappropriate, :illegal, :safety_concern, :other].sample, 
         description: Faker::Lorem.sentence(word_count: 10),
         flagged_at: Faker::Time.between(from: event.start_time, to: event.end_time),
-        user: user,  # User who flagged the event
-        event: event  # Event being flagged
+        user: user,  
+        event: event 
       )
     end
   end

@@ -1,37 +1,66 @@
-<div id="<%= dom_id event %>">
-  <p>
-    <strong>Title:</strong>
-    <%= event.title %>
-  </p>
+<div id="<%= dom_id event %>" class="container d-flex mb-3 ps-2 border">
+  <div class="row w-100 gap-1 py-2 flex-between border">
+    <div class="col col-lg-3 border">
+      <img src="" alt="" />
+      <h1>dfdfdf</h1>
+    </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
+    <div class="col col-lg-8 border">
+      <div class="d-flex justify-content-between mb-3">
+        <div>
+          <strong>Title:</strong>
+          <%= event.title %>
+        </div>
+        <div>
+          <img src="" alt="" />
+          <strong>User:</strong>
+          <%= event.user_id %>
+        </div>
+      </div>
 
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
+      <div class="">
+        <p>
+          <strong>Description:</strong>
+          <%= event.description %>
+        </p>
 
-  <p>
-    <strong>Start time:</strong>
-    <%= event.start_time %>
-  </p>
+        <p>
+          <strong>Location:</strong>
+          <%= event.location %>
+        </p>
 
-  <p>
-    <strong>End time:</strong>
-    <%= event.end_time %>
-  </p>
+        <p>
+          <strong>Time:</strong>
+          <%= event.start_time %> to <%= event.end_time %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Status:</strong>
-    <%= event.status %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= event.user_id %>
-  </p>
-
+      <div class="border d-flex justify-content-between mt-4">
+        <div class="btn btn-info text-white">
+          <%= link_to "Show this event", event %>
+        </div>
+        <div class="d-flex justify-content-end">
+          <div class="me-4 btn border-info">
+            <strong class="text-info fw-bold">Status:</strong>
+            <span class="fw-bold"><%= event.status %></span>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Flag Event
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
