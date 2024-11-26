@@ -436,3 +436,29 @@ Processing by FlagsController#index as HTML
 Completed 200 OK in 13ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 3710)
 
 
+Started GET "/users" for 192.168.65.1 at 2024-11-26 01:19:57 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 299)
+  Rendered users/index.html.erb within layouts/application (Duration: 24.0ms | Allocations: 10190)
+  Rendered layout layouts/application.html.erb (Duration: 26.6ms | Allocations: 11446)
+Completed 200 OK in 73ms (Views: 25.1ms | ActiveRecord: 5.8ms | Allocations: 22851)
+
+
+Started GET "/flags" for 192.168.65.1 at 2024-11-26 01:20:00 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by FlagsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flags/index.html.erb within layouts/application
+  [1m[36mFlag Load (0.8ms)[0m  [1m[34mSELECT "flags".* FROM "flags"[0m
+  ↳ app/views/flags/index.html.erb:6
+  Rendered flags/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 886)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 1417)
+Completed 200 OK in 83ms (Views: 13.7ms | ActiveRecord: 0.8ms | Allocations: 4901)
+
+
