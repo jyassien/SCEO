@@ -10,8 +10,8 @@ class User < ApplicationRecord
 
     # Ensure the email is a school email
     def email_format
-        unless email =~ /\A[\w+\-.]+@[\w\-]+\.\w*\.edu\z/i
-          errors.add(:email, "must be an @.edu email address")
+        unless email =~ /\A[\w+\-.]+@[a-zA-Z\d\-]+\.edu\z/i
+            errors.add(:email, "must be a valid .edu school email address")
         end
     end
     
