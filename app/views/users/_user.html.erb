@@ -1,27 +1,38 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Username:</strong>
-    <%= user.username %>
-  </p>
+<div id="<%= dom_id user %>" class="container d-flex mb-3 ps-2 border">
+  <div class="row w-100 gap-1 py-2 flex-between border">
+    <div class="col col-lg-3 p-auto border">
+      <%= image_tag 'default-profile-picture.jpg', size: "300x250" %>
+    </div>
 
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
-    <strong>Password:</strong>
-    <%= user.password %>
-  </p>
-
-  <p>
-    <strong>User type:</strong>
-    <%= user.user_type %>
-  </p>
-
-  <p>
-    <strong>College name:</strong>
-    <%= user.college_name %>
-  </p>
-
+    <div class="col col-lg-8 d-flex flex-column justify-content-between border">
+      <div class="mb-3 d-flex flex-column gap-2">
+        <div>
+          <strong>Username:</strong>
+          <%= user.username %>
+        </div>
+        <div>
+          <strong>Email:</strong>
+          <%= user.email %>
+        </div>
+        <div>
+          <strong>Account type:</strong>
+          <%= user.user_type %>
+        </div>
+        <div>
+          <strong>College name:</strong>
+          <%= user.college_name %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <div class="me-4 btn border-info">
+          <strong class="text-info fw-bold">My Events:</strong>
+          <span class="fw-bold"><%= 25 %></span>
+        </div>
+        <div class="me-4 btn border-info">
+          <strong class="text-info fw-bold">Registered Events:</strong>
+          <span class="fw-bold"><%= 23 %></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
