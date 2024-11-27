@@ -2,20 +2,24 @@
 
 <div class="d-flex justify-content-between border">
   <h1>Events</h1>
-  <div class="dropdown">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      Filter Events
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
+  <div class="d-flex">
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Filter Events
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+    <div class="ms-2 btn btn-primaryyy text-white fw-bold">
+      <%= link_to "Creat event", new_event_path %>
+    </div>
   </div>
 </div>
 
@@ -26,5 +30,3 @@
     </p> -->
   <% end %>
 </div>
-
-<%= link_to "New event", new_event_path %>

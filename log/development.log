@@ -8411,3 +8411,1610 @@ FOREIGN KEY ("user_id")
   [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Autem quisquam mollitia cum rerum animi quas ullam aut ea."], ["flagged_at", "2025-01-02 12:49:22.861167"], ["user_id", 10], ["event_id", 30], ["created_at", "2024-11-26 02:54:31.634491"], ["updated_at", "2024-11-26 02:54:31.634491"]]
   [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 30]]
   [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:56:34 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 140.4ms | Allocations: 24957)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 177.3ms | Allocations: 56120)
+  Rendered layout layouts/application.html.erb (Duration: 179.7ms | Allocations: 57343)
+Completed 200 OK in 496ms (Views: 184.8ms | ActiveRecord: 4.1ms | Allocations: 352780)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:57:01 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 6.5ms | Allocations: 1410)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 5.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 2.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 68.4ms | Allocations: 25218)
+  Rendered layout layouts/application.html.erb (Duration: 73.2ms | Allocations: 26269)
+Completed 200 OK in 104ms (Views: 65.2ms | ActiveRecord: 13.8ms | Allocations: 28722)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:57:13 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.3ms | Allocations: 1427)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 35.6ms | Allocations: 25318)
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 26369)
+Completed 200 OK in 51ms (Views: 34.2ms | ActiveRecord: 5.5ms | Allocations: 28815)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:57:24 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 10.3ms | Allocations: 1410)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 52.3ms | Allocations: 25200)
+  Rendered layout layouts/application.html.erb (Duration: 55.4ms | Allocations: 26251)
+Completed 200 OK in 73ms (Views: 52.8ms | ActiveRecord: 8.7ms | Allocations: 28686)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:57:36 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 13.9ms | Allocations: 1429)
+  Rendered events/_event.html.erb (Duration: 3.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 514)
+  Rendered events/_event.html.erb (Duration: 1.6ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 74.1ms | Allocations: 25264)
+  Rendered layout layouts/application.html.erb (Duration: 77.5ms | Allocations: 26315)
+Completed 200 OK in 90ms (Views: 76.6ms | ActiveRecord: 3.9ms | Allocations: 28752)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:57:37 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 7.6ms | Allocations: 1019)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 511)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 58.2ms | Allocations: 19756)
+  Rendered layout layouts/application.html.erb (Duration: 61.2ms | Allocations: 20252)
+Completed 200 OK in 66ms (Views: 62.6ms | ActiveRecord: 0.6ms | Allocations: 20507)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:58:50 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 25.1ms | Allocations: 1710)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 6.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 2.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 86.2ms | Allocations: 25506)
+  Rendered layout layouts/application.html.erb (Duration: 94.3ms | Allocations: 26557)
+Completed 200 OK in 108ms (Views: 90.8ms | ActiveRecord: 6.7ms | Allocations: 29009)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:59:09 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.8ms | Allocations: 1426)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 2.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 49.8ms | Allocations: 25279)
+  Rendered layout layouts/application.html.erb (Duration: 53.1ms | Allocations: 26330)
+Completed 200 OK in 77ms (Views: 48.2ms | ActiveRecord: 8.1ms | Allocations: 28777)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:59:21 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.1ms | Allocations: 1410)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 49.4ms | Allocations: 25223)
+  Rendered layout layouts/application.html.erb (Duration: 54.0ms | Allocations: 26274)
+Completed 200 OK in 77ms (Views: 46.6ms | ActiveRecord: 15.5ms | Allocations: 28710)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 00:59:37 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.2ms | Allocations: 1427)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 39.2ms | Allocations: 25283)
+  Rendered layout layouts/application.html.erb (Duration: 41.8ms | Allocations: 26334)
+Completed 200 OK in 53ms (Views: 38.7ms | ActiveRecord: 7.6ms | Allocations: 28787)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:00:32 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 18.0ms | Allocations: 1417)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 3.2ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 2.2ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 2.1ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 5.8ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 1.8ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 2.7ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 2.7ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 4.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/index.html.erb within layouts/application (Duration: 141.2ms | Allocations: 25307)
+  Rendered layout layouts/application.html.erb (Duration: 146.8ms | Allocations: 26358)
+Completed 200 OK in 227ms (Views: 192.0ms | ActiveRecord: 25.4ms | Allocations: 28793)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:00:54 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 9.5ms | Allocations: 1925)
+  Rendered events/index.html.erb within layouts/application (Duration: 24.5ms | Allocations: 8227)
+  Rendered layout layouts/application.html.erb (Duration: 25.0ms | Allocations: 8327)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 9.2ms | Allocations: 10814)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div id="<%= dom_id event %>" class="container d-flex mb-3 ps-2 border">
+  <div class="row w-100 gap-1 py-2 flex-between border">
+    <div class="col col-lg-3 p-auto border">
+      <%= image_tag 'default-event-picture.jpg', size: "300x250" %>
+    </div>
+
+    <div class="col col-lg-8 border">
+      <div class="d-flex justify-content-between mb-3">
+        <div>
+          <strong>Title:</strong>
+          <%= event.title %>
+        </div>
+        <div class="">
+          <%= image_tag 'default-profile-picture.jpg', size: "50x50",
+          class="bg-info" %>
+          <strong>User:</strong>
+          <%= event.user_id %>
+        </div>
+      </div>
+
+      <div class="">
+        <p>
+          <strong>Description:</strong>
+          <%= event.description %>
+        </p>
+
+        <p>
+          <strong>Location:</strong>
+          <%= event.location %>
+        </p>
+
+        <p>
+          <strong>Time:</strong>
+          <%= event.start_time %> to <%= event.end_time %>
+        </p>
+      </div>
+
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+          role="progressbar"
+          style="width: 25%"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"></div>
+      </div>
+
+      <div class="border d-flex justify-content-between mt-4">
+        <div class="btn btn-info text-white">
+          <%= link_to "Show this event", event %>
+        </div>
+        <div class="d-flex justify-content-end">
+          <div class="me-4 btn border-info">
+            <strong class="text-info fw-bold">Status:</strong>
+            <span class="fw-bold"><%= event.status %></span>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Flag Event
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+):
+1:    <div id="<%= dom_id event %>" class="container d-flex mb-3 ps-2 border">
+2:      <div class="row w-100 gap-1 py-2 flex-between border">
+3:        <div class="col col-lg-3 p-auto border">
+4:          <%= image_tag 'default-event-picture.jpg', size: "300x250" %>
+5:        </div>
+6:    
+7:        <div class="col col-lg-8 border">
+8:          <div class="d-flex justify-content-between mb-3">
+9:            <div>
+10:              <strong>Title:</strong>
+11:              <%= event.title %>
+12:            </div>
+13:            <div class="">
+14:              <%= image_tag 'default-profile-picture.jpg', size: "50x50",
+15:              class="bg-info" %>
+16:              <strong>User:</strong>
+17:              <%= event.user_id %>
+18:            </div>
+19:          </div>
+20:    
+21:          <div class="">
+22:            <p>
+23:              <strong>Description:</strong>
+24:              <%= event.description %>
+25:            </p>
+26:    
+27:            <p>
+28:              <strong>Location:</strong>
+29:              <%= event.location %>
+30:            </p>
+31:    
+32:            <p>
+33:              <strong>Time:</strong>
+34:              <%= event.start_time %> to <%= event.end_time %>
+35:            </p>
+36:          </div>
+37:    
+38:          <div class="progress">
+39:            <div
+40:              class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+41:              role="progressbar"
+42:              style="width: 25%"
+43:              aria-valuenow="25"
+44:              aria-valuemin="0"
+45:              aria-valuemax="100"></div>
+46:          </div>
+47:    
+48:          <div class="border d-flex justify-content-between mt-4">
+49:            <div class="btn btn-info text-white">
+50:              <%= link_to "Show this event", event %>
+51:            </div>
+52:            <div class="d-flex justify-content-end">
+53:              <div class="me-4 btn border-info">
+54:                <strong class="text-info fw-bold">Status:</strong>
+55:                <span class="fw-bold"><%= event.status %></span>
+56:              </div>
+57:              <div class="dropdown">
+58:                <button
+59:                  class="btn btn-secondary dropdown-toggle"
+60:                  type="button"
+61:                  data-bs-toggle="dropdown"
+62:                  aria-expanded="false">
+63:                  Flag Event
+64:                </button>
+65:                <ul class="dropdown-menu">
+66:                  <li><a class="dropdown-item" href="#">Action</a></li>
+67:                  <li><a class="dropdown-item" href="#">Another action</a></li>
+68:                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+69:                </ul>
+70:              </div>
+71:            </div>
+72:          </div>
+73:        </div>
+74:      </div>
+75:    </div>
+  
+app/views/events/_event.html.erb:15: syntax error, unexpected '='
+app/views/events/index.html.erb:27
+app/views/events/index.html.erb:27
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:01:10 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.9ms | Allocations: 1433)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 513)
+  Rendered events/index.html.erb within layouts/application (Duration: 50.8ms | Allocations: 25388)
+  Rendered layout layouts/application.html.erb (Duration: 54.1ms | Allocations: 26439)
+Completed 200 OK in 74ms (Views: 42.4ms | ActiveRecord: 16.7ms | Allocations: 28889)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:01:27 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 7.1ms | Allocations: 1428)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 3.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 77.6ms | Allocations: 25246)
+  Rendered layout layouts/application.html.erb (Duration: 80.2ms | Allocations: 26297)
+Completed 200 OK in 91ms (Views: 76.0ms | ActiveRecord: 6.3ms | Allocations: 28732)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:02:21 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 11.5ms | Allocations: 1422)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 2.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 4.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 67.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 72.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 51.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 7.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 29.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 8.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 30.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 6.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 5.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 3.9ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 389.2ms | Allocations: 25223)
+  Rendered layout layouts/application.html.erb (Duration: 447.9ms | Allocations: 26274)
+Completed 200 OK in 556ms (Views: 444.0ms | ActiveRecord: 16.3ms | Allocations: 28725)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:03:23 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 14.8ms | Allocations: 1430)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 53.2ms | Allocations: 25295)
+  Rendered layout layouts/application.html.erb (Duration: 55.9ms | Allocations: 26346)
+Completed 200 OK in 62ms (Views: 50.2ms | ActiveRecord: 7.0ms | Allocations: 28791)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:03:39 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 29.9ms | Allocations: 1414)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 61.4ms | Allocations: 25208)
+  Rendered layout layouts/application.html.erb (Duration: 63.9ms | Allocations: 26259)
+Completed 200 OK in 75ms (Views: 58.8ms | ActiveRecord: 7.2ms | Allocations: 28694)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:04:10 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 18.8ms | Allocations: 1412)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 2.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 3.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 3.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 2.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 94.7ms | Allocations: 25223)
+  Rendered layout layouts/application.html.erb (Duration: 100.4ms | Allocations: 26274)
+Completed 200 OK in 137ms (Views: 99.4ms | ActiveRecord: 6.9ms | Allocations: 28708)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:04:24 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.9ms | Allocations: 1429)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 2.0ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 43.0ms | Allocations: 25306)
+  Rendered layout layouts/application.html.erb (Duration: 46.1ms | Allocations: 26357)
+Completed 200 OK in 53ms (Views: 39.9ms | ActiveRecord: 7.7ms | Allocations: 28811)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:05:20 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 10.5ms | Allocations: 1414)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 6.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 113.2ms | Allocations: 25226)
+  Rendered layout layouts/application.html.erb (Duration: 120.7ms | Allocations: 26277)
+Completed 200 OK in 225ms (Views: 117.6ms | ActiveRecord: 13.0ms | Allocations: 28712)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:05:31 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.3ms | Allocations: 1432)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 514)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.8ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 78.9ms | Allocations: 25247)
+  Rendered layout layouts/application.html.erb (Duration: 83.4ms | Allocations: 26298)
+Completed 200 OK in 99ms (Views: 82.6ms | ActiveRecord: 7.0ms | Allocations: 28733)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:05:41 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.8ms | Allocations: 1424)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 510)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 510)
+  Rendered events/index.html.erb within layouts/application (Duration: 45.6ms | Allocations: 25225)
+  Rendered layout layouts/application.html.erb (Duration: 49.5ms | Allocations: 26276)
+Completed 200 OK in 60ms (Views: 41.7ms | ActiveRecord: 10.6ms | Allocations: 28730)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:08:24 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 7.8ms | Allocations: 1435)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/index.html.erb within layouts/application (Duration: 47.1ms | Allocations: 25278)
+  Rendered layout layouts/application.html.erb (Duration: 54.5ms | Allocations: 26329)
+Completed 200 OK in 79ms (Views: 45.1ms | ActiveRecord: 12.1ms | Allocations: 28764)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:08:58 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 4.7ms | Allocations: 1449)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 512)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 512)
+  Rendered events/index.html.erb within layouts/application (Duration: 34.1ms | Allocations: 25363)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 26414)
+Completed 200 OK in 44ms (Views: 33.1ms | ActiveRecord: 5.8ms | Allocations: 28859)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:13:13 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 16.0ms | Allocations: 1438)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 1.6ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 1.9ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 9.1ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 516)
+  Rendered events/index.html.erb within layouts/application (Duration: 102.4ms | Allocations: 25424)
+  Rendered layout layouts/application.html.erb (Duration: 117.9ms | Allocations: 26475)
+Completed 200 OK in 135ms (Views: 99.7ms | ActiveRecord: 22.7ms | Allocations: 28911)
+
+
+Started GET "/events/location-pin-star.png" for 192.168.65.1 at 2024-11-27 01:13:14 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as PNG
+  Parameters: {"id"=>"location-pin-star"}
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+Completed 404 Not Found in 92ms (ActiveRecord: 0.8ms | Allocations: 2637)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=location-pin-star):
+  
+app/controllers/events_controller.rb:63:in `set_event'
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:13:45 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 12.7ms | Allocations: 1454)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.2ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/index.html.erb within layouts/application (Duration: 47.2ms | Allocations: 25489)
+  Rendered layout layouts/application.html.erb (Duration: 50.3ms | Allocations: 26540)
+Completed 200 OK in 62ms (Views: 46.9ms | ActiveRecord: 6.2ms | Allocations: 28992)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/location-pin-star.png"):
+  
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:13:49 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 9.6ms | Allocations: 1033)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 2.9ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 2.2ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 2.1ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 1.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 19.7ms | Allocations: 518)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 519)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 2.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 516)
+  Rendered events/index.html.erb within layouts/application (Duration: 76.9ms | Allocations: 19942)
+  Rendered layout layouts/application.html.erb (Duration: 79.7ms | Allocations: 20438)
+Completed 200 OK in 85ms (Views: 80.8ms | ActiveRecord: 0.6ms | Allocations: 20685)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/location-pin-star.png"):
+  
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:14:17 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 161.9ms | Allocations: 20647)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 1.6ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/index.html.erb within layouts/application (Duration: 210.3ms | Allocations: 50929)
+  Rendered layout layouts/application.html.erb (Duration: 214.9ms | Allocations: 51980)
+Completed 200 OK in 236ms (Views: 209.6ms | ActiveRecord: 9.3ms | Allocations: 54429)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:14:29 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 5.1ms | Allocations: 1888)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 1.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 4.8ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 2.2ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 731)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 731)
+  Rendered events/index.html.erb within layouts/application (Duration: 49.4ms | Allocations: 32118)
+  Rendered layout layouts/application.html.erb (Duration: 53.1ms | Allocations: 33169)
+Completed 200 OK in 65ms (Views: 48.8ms | ActiveRecord: 8.4ms | Allocations: 35614)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:16:25 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 52.6ms | Allocations: 18306)
+  Rendered events/index.html.erb within layouts/application (Duration: 69.1ms | Allocations: 24554)
+  Rendered layout layouts/application.html.erb (Duration: 69.3ms | Allocations: 24646)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 11.4ms | Allocations: 27085)
+
+
+  
+ActionView::Template::Error (Asset `time-attendance-management.png` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link time-attendance-management.png
+
+and restart your server):
+    29:         </p>
+    30: 
+    31:         <p class="text-end">
+    32:           <%= image_tag 'time-attendance-management.png', size: "40x40" %> <%=
+    33:           event.start_time %> to <%= event.end_time %>
+    34:         </p>
+    35:       </div>
+  
+app/views/events/_event.html.erb:32
+app/views/events/index.html.erb:27
+app/views/events/index.html.erb:27
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:16:54 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 178.6ms | Allocations: 20717)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/index.html.erb within layouts/application (Duration: 225.8ms | Allocations: 52311)
+  Rendered layout layouts/application.html.erb (Duration: 232.1ms | Allocations: 53352)
+Completed 200 OK in 243ms (Views: 234.7ms | ActiveRecord: 1.2ms | Allocations: 53607)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:17:07 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 8.4ms | Allocations: 2282)
+  Rendered events/_event.html.erb (Duration: 17.5ms | Allocations: 961)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 958)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 956)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.3ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/index.html.erb within layouts/application (Duration: 74.4ms | Allocations: 39029)
+  Rendered layout layouts/application.html.erb (Duration: 78.0ms | Allocations: 40082)
+Completed 200 OK in 93ms (Views: 76.5ms | ActiveRecord: 8.2ms | Allocations: 42534)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:17:18 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 7.9ms | Allocations: 2283)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.8ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 3.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 2.3ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/index.html.erb within layouts/application (Duration: 59.2ms | Allocations: 39017)
+  Rendered layout layouts/application.html.erb (Duration: 63.5ms | Allocations: 40068)
+Completed 200 OK in 74ms (Views: 56.7ms | ActiveRecord: 9.4ms | Allocations: 42522)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:17:39 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 11.7ms | Allocations: 2281)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 25.6ms | Allocations: 963)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 956)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 955)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 956)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 2.0ms | Allocations: 957)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 956)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.2ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 956)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 954)
+  Rendered events/index.html.erb within layouts/application (Duration: 96.2ms | Allocations: 38978)
+  Rendered layout layouts/application.html.erb (Duration: 99.6ms | Allocations: 40031)
+Completed 200 OK in 130ms (Views: 93.5ms | ActiveRecord: 10.2ms | Allocations: 42466)
+
+
+Started GET "/events/" for 192.168.65.1 at 2024-11-27 01:18:07 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 9.8ms | Allocations: 2282)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 955)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 2.0ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.1ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 1.9ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 954)
+  Rendered events/_event.html.erb (Duration: 0.4ms | Allocations: 954)
+  Rendered events/index.html.erb within layouts/application (Duration: 77.4ms | Allocations: 38965)
+  Rendered layout layouts/application.html.erb (Duration: 85.4ms | Allocations: 40016)
+Completed 200 OK in 99ms (Views: 70.7ms | ActiveRecord: 19.1ms | Allocations: 42461)
+
+

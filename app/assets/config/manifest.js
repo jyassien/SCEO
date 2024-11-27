@@ -3,3 +3,6 @@
 
 //= link_directory ../javascript .js
 //= link_tree ../../../vendor/javascript .js
+
+//= link default-event-picture.jpg
+//= link time-attendance-management.png
