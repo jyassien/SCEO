@@ -71,3 +71,5 @@ end
 # Setting up Bootstrap and JavaScript
 gem "bootstrap"
 gem "sassc-rails"
+
+gem "devise"

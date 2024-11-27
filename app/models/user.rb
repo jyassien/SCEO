@@ -1,10 +1,17 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
     has_many :events, dependent: :destroy
     has_many :events, dependent: :destroy
 
-    validates :email, presence: true, uniqueness: { case_sensitive: false }
-    validate :email_format  # Required Format
-    before_save :downcase_email
+    # validates :email, presence: true, uniqueness: { case_sensitive: false }
+    # validate :email_format  # Required Format
+    # before_save :downcase_email
+
+    devise :database_authenticatable, :registerable,
+            :recoverable, :rememberable, :validatable
 
     private
 
