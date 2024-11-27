@@ -48,17 +48,9 @@
       </div>
 
       <div class="border d-flex justify-content-between mt-4">
-        <div class="btn btn-info text-white">
-          <%= link_to "Show this event", event %>
-        </div>
-        <div class="d-flex justify-content-end">
-          <div class="me-4 btn border-info">
-            <strong class="text-info fw-bold">Registered:</strong>
-            <span class="fw-bold"><%= 25 %></span>
-          </div>
-          <div class="me-4 btn border-info">
-            <strong class="text-info fw-bold">Status:</strong>
-            <span class="fw-bold"><%= event.status %></span>
+        <div class="d-flex">
+          <div class="btn btn-info text-white me-2">
+            <%= link_to "Show this event", event %>
           </div>
           <div class="dropdown">
             <button
@@ -66,13 +58,28 @@
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false">
-              Flag Event
+              Flag This Event
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <div class="me-3 btn border-info">
+            <strong class="text-info fw-bold">Registered:</strong>
+            <span class="fw-bold"><%= 25 %></span>
+          </div>
+          <div class="me-3 btn border-info">
+            <strong class="text-info fw-bold">Status:</strong>
+            <span class="fw-bold"><%= event.status %></span>
+          </div>
+          <div class="btn border-info">
+            <strong class="text-info fw-bold">Flags:</strong>
+            <span class="fw-bold"><%= 13 %></span>
           </div>
         </div>
       </div>

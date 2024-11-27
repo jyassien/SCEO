@@ -1,27 +1,26 @@
 <div id="<%= dom_id flag %>">
   <p>
-    <strong>Reason:</strong>
-    <%= flag.reason %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= flag.description %>
-  </p>
-
-  <p>
-    <strong>Flagged at:</strong>
-    <%= flag.flagged_at %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= flag.user_id %>
-  </p>
-
-  <p>
     <strong>Event:</strong>
     <%= flag.event_id %>
   </p>
-
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Reson</th>
+        <th scope="col">Description</th>
+        <th scope="col">Flagged By</th>
+        <th scope="col">Flagged Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= flag.reason %></td>
+        <td><%= flag.description %></td>
+        <td><%= flag.user_id %></td>
+        <td><%= flag.flagged_at %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
