@@ -4,7 +4,7 @@ class Event < ApplicationRecord
 
   
   def creator
-    user.username 
+    user.full_name 
   end
 end
 

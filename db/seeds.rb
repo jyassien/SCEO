@@ -10,19 +10,23 @@ Flag.delete_all
 VALID_REASONS = ["Inappropriate Content", "Spam", "Misleading Information", "Offensive Behavior", "Duplicate Event"]
 
 # Create 10 users
+users = []
 10.times do |i|
   user = User.create!(
-    username: "user#{i + 1}",
+    full_name: "user#{i + 1}",
     email: "user#{i + 1}@msudenver.edu", 
     password: "password", 
     user_type: ["admin", "professor", "student"].sample, 
     college_name: Faker::University.name
   )
+  users << user # Store users to associate with events later
+end
 
-  # Create 3 events for each user
+# Create 3 events for each user
+users.each do |user|
   3.times do |j|
     event = Event.create!(
-      title: "Event #{i * 3 + j + 1}",
+      title: "Event #{user.id * 3 + j + 1}",
       description: Faker::Lorem.sentence(word_count: 15),
       location: Faker::Address.city,
       start_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1.month),
@@ -46,3 +50,5 @@ VALID_REASONS = ["Inappropriate Content", "Spam", "Misleading Information", "Off
 end
 
 puts "10 users, 30 events, and 60 flags created."
+
+# rails db:seed

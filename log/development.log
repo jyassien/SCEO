@@ -13175,3 +13175,638 @@ Completed 200 OK in 180ms (Views: 175.5ms | ActiveRecord: 1.2ms | Allocations: 2
   [1m[36mFlag Create (1.0ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Nihil quaerat molestiae voluptatem perferendis nulla aut autem ratione quia."], ["flagged_at", "2025-01-01 13:31:35.292568"], ["user_id", 23], ["event_id", 60], ["created_at", "2024-12-04 18:04:09.777054"], ["updated_at", "2024-12-04 18:04:09.777054"]]
   [1m[36mEvent Update All (0.1ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 60]]
   [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RenameUsernameToFullNameInUsers (20241204182447)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "full_name" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "password" varchar DEFAULT NULL, "user_type" varchar DEFAULT NULL, "college_name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime(6) DEFAULT NULL, "remember_created_at" datetime(6) DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","full_name","email","password","user_type","college_name","created_at","updated_at","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at")
+                     SELECT "id","username","email","password","user_type","college_name","created_at","updated_at","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at" FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "full_name" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "password" varchar DEFAULT NULL, "user_type" varchar DEFAULT NULL, "college_name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime(6) DEFAULT NULL, "remember_created_at" datetime(6) DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","full_name","email","password","user_type","college_name","created_at","updated_at","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at")
+                     SELECT "id","full_name","email","password","user_type","college_name","created_at","updated_at","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241204182447') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Delete All (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Delete All (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Delete All (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Delete All (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Delete All (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 14]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 31]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 61]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 62]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 31]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 32]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 63]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 64]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 32]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 33]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 65]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 66]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 33]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 14]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 14]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 15]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 34]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 67]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 68]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 34]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 35]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 69]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 70]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 35]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 36]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 71]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 72]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 36]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 15]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 15]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 16]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 37]]
+  [1m[36mFlag Destroy (0.3ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 73]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 74]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 37]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 38]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 75]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 76]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 38]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 39]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 77]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 78]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 39]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 16]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 16]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 17]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 40]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 79]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 80]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 40]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 41]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 81]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 82]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 41]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 42]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 83]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 84]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 42]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 17]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 17]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 18]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 43]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 85]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 86]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 43]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 44]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 87]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 88]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 44]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 45]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 89]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 90]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 45]]
+  [1m[36mFlag Load (0.2ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 18]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 18]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 19]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 46]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 91]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 92]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 46]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 47]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 93]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 94]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 47]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 48]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 95]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 96]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 48]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 19]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 19]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 20]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 49]]
+  [1m[36mFlag Destroy (0.9ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 97]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 98]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 49]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 50]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 99]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 100]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 50]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 51]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 101]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 102]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 51]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 20]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 20]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 21]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 52]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 103]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 104]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 52]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 53]]
+  [1m[36mFlag Destroy (0.2ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 105]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 106]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 53]]
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 54]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 107]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 108]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 54]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 21]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 21]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 22]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 55]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 109]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 110]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 55]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 56]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 111]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 112]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 56]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 57]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 113]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 114]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 57]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 22]]
+  [1m[36mUser Destroy (0.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 22]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 23]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 58]]
+  [1m[36mFlag Destroy (0.9ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 115]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 116]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 58]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 59]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 117]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 118]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 59]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."event_id" = ?[0m  [["event_id", 60]]
+  [1m[36mFlag Destroy (0.1ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 119]]
+  [1m[36mFlag Destroy (0.0ms)[0m  [1m[31mDELETE FROM "flags" WHERE "flags"."id" = ?[0m  [["id", 120]]
+  [1m[36mEvent Destroy (0.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 60]]
+  [1m[36mFlag Load (0.0ms)[0m  [1m[34mSELECT "flags".* FROM "flags" WHERE "flags"."user_id" = ?[0m  [["user_id", 23]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 23]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mFlag Load (0.1ms)[0m  [1m[34mSELECT "flags".* FROM "flags"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Delete All (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mEvent Delete All (0.0ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[36mFlag Delete All (0.0ms)[0m  [1m[31mDELETE FROM "flags"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user1@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user1"], ["email", "user1@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "professor"], ["college_name", "Western Kiehn"], ["created_at", "2024-12-04 18:41:57.190217"], ["updated_at", "2024-12-04 18:41:57.190217"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user2@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user2"], ["email", "user2@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "admin"], ["college_name", "East Arkansas Institute"], ["created_at", "2024-12-04 18:41:57.561553"], ["updated_at", "2024-12-04 18:41:57.561553"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user3@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user3"], ["email", "user3@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "professor"], ["college_name", "Terry College"], ["created_at", "2024-12-04 18:41:57.932804"], ["updated_at", "2024-12-04 18:41:57.932804"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user4@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user4"], ["email", "user4@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "student"], ["college_name", "West Bednar"], ["created_at", "2024-12-04 18:41:58.317857"], ["updated_at", "2024-12-04 18:41:58.317857"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user5@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user5"], ["email", "user5@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "student"], ["college_name", "The Emmerich College"], ["created_at", "2024-12-04 18:41:58.688764"], ["updated_at", "2024-12-04 18:41:58.688764"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user6@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user6"], ["email", "user6@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "professor"], ["college_name", "Eastern New Hampshire University"], ["created_at", "2024-12-04 18:41:59.060836"], ["updated_at", "2024-12-04 18:41:59.060836"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user7@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user7"], ["email", "user7@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "admin"], ["college_name", "South South Dakota University"], ["created_at", "2024-12-04 18:41:59.432638"], ["updated_at", "2024-12-04 18:41:59.432638"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user8@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user8"], ["email", "user8@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "admin"], ["college_name", "Dare Institute"], ["created_at", "2024-12-04 18:41:59.819046"], ["updated_at", "2024-12-04 18:41:59.819046"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user9@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user9"], ["email", "user9@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "admin"], ["college_name", "Northern Florida Institute"], ["created_at", "2024-12-04 18:42:00.192246"], ["updated_at", "2024-12-04 18:42:00.192246"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user10@msudenver.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password", "user_type", "college_name", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["full_name", "user10"], ["email", "user10@msudenver.edu"], ["password", "[FILTERED]"], ["user_type", "student"], ["college_name", "Southern Oklahoma Institute"], ["created_at", "2024-12-04 18:42:00.562765"], ["updated_at", "2024-12-04 18:42:00.562765"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.9ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 73"], ["description", "Nihil nobis illo qui est asperiores dolor tempora aliquid explicabo sit accusantium et incidunt sed."], ["location", "Lake Claudechester"], ["start_time", "2024-12-12 19:01:55.787298"], ["end_time", "2025-01-22 20:33:59.057724"], ["status", "scheduled"], ["user_id", 24], ["created_at", "2024-12-04 18:42:00.586526"], ["updated_at", "2024-12-04 18:42:00.586526"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Sint fugiat cum impedit incidunt odio dolor repellendus aut qui."], ["flagged_at", "2025-01-18 00:28:12.196077"], ["user_id", 24], ["event_id", 61], ["created_at", "2024-12-04 18:42:00.596085"], ["updated_at", "2024-12-04 18:42:00.596085"]]
+  [1m[36mEvent Update All (0.1ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 61]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Non aperiam laborum et eaque dolor nihil provident ut libero."], ["flagged_at", "2025-01-22 09:18:05.980532"], ["user_id", 24], ["event_id", 61], ["created_at", "2024-12-04 18:42:00.601207"], ["updated_at", "2024-12-04 18:42:00.601207"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 61]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 74"], ["description", "Voluptatibus aut et est et alias explicabo est rerum dicta qui eligendi omnis fuga ullam."], ["location", "Vivianview"], ["start_time", "2024-12-16 06:28:47.870025"], ["end_time", "2025-01-28 13:27:54.352420"], ["status", "scheduled"], ["user_id", 24], ["created_at", "2024-12-04 18:42:00.605456"], ["updated_at", "2024-12-04 18:42:00.605456"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Qui sed aliquid non distinctio eum corporis et ea saepe."], ["flagged_at", "2025-01-01 01:40:43.986013"], ["user_id", 24], ["event_id", 62], ["created_at", "2024-12-04 18:42:00.608485"], ["updated_at", "2024-12-04 18:42:00.608485"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 62]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Incidunt rerum beatae dolor sit et cupiditate quae est consectetur."], ["flagged_at", "2025-01-19 19:15:51.105897"], ["user_id", 24], ["event_id", 62], ["created_at", "2024-12-04 18:42:00.612315"], ["updated_at", "2024-12-04 18:42:00.612315"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 62]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 75"], ["description", "Repellendus tempora saepe voluptas natus deserunt eum quia sint voluptatem illo quis unde possimus cupiditate."], ["location", "Gladyburgh"], ["start_time", "2025-01-03 06:13:38.554405"], ["end_time", "2025-01-13 10:54:06.528337"], ["status", "cancelled"], ["user_id", 24], ["created_at", "2024-12-04 18:42:00.616384"], ["updated_at", "2024-12-04 18:42:00.616384"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Hic et consequuntur autem voluptas neque sint voluptas ex maiores."], ["flagged_at", "2025-01-11 21:30:50.771907"], ["user_id", 24], ["event_id", 63], ["created_at", "2024-12-04 18:42:00.619341"], ["updated_at", "2024-12-04 18:42:00.619341"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 63]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Aliquid voluptates cumque doloribus quia a sunt omnis nam ad."], ["flagged_at", "2025-01-07 17:53:48.237685"], ["user_id", 24], ["event_id", 63], ["created_at", "2024-12-04 18:42:00.623305"], ["updated_at", "2024-12-04 18:42:00.623305"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 63]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 76"], ["description", "Quo magnam minus doloremque non dignissimos nobis accusantium voluptatem eos eligendi ex non minima id."], ["location", "West Wilburton"], ["start_time", "2025-01-01 17:55:10.687823"], ["end_time", "2025-01-10 11:54:35.484484"], ["status", "scheduled"], ["user_id", 25], ["created_at", "2024-12-04 18:42:00.627539"], ["updated_at", "2024-12-04 18:42:00.627539"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Dolorem assumenda omnis dolores enim cumque iure quia consequatur sit."], ["flagged_at", "2025-01-02 22:32:04.493053"], ["user_id", 25], ["event_id", 64], ["created_at", "2024-12-04 18:42:00.630560"], ["updated_at", "2024-12-04 18:42:00.630560"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 64]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Reiciendis qui dolor autem quisquam ducimus quos necessitatibus repellat eligendi."], ["flagged_at", "2025-01-06 01:23:55.258236"], ["user_id", 25], ["event_id", 64], ["created_at", "2024-12-04 18:42:00.636819"], ["updated_at", "2024-12-04 18:42:00.636819"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 64]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 77"], ["description", "Est dolores aut quod natus sed rerum voluptatem cumque iusto voluptas aut sit debitis nam."], ["location", "North Nicole"], ["start_time", "2024-12-11 04:09:32.504606"], ["end_time", "2025-01-05 12:08:17.884868"], ["status", "cancelled"], ["user_id", 25], ["created_at", "2024-12-04 18:42:00.641324"], ["updated_at", "2024-12-04 18:42:00.641324"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Soluta architecto corporis voluptatem nihil cum similique minima sed dolor."], ["flagged_at", "2024-12-19 21:55:41.130566"], ["user_id", 25], ["event_id", 65], ["created_at", "2024-12-04 18:42:00.644579"], ["updated_at", "2024-12-04 18:42:00.644579"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 65]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Laudantium odit voluptatem mollitia et at nulla expedita facilis accusantium."], ["flagged_at", "2024-12-22 15:51:56.903905"], ["user_id", 25], ["event_id", 65], ["created_at", "2024-12-04 18:42:00.648534"], ["updated_at", "2024-12-04 18:42:00.648534"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 65]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (1.1ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 78"], ["description", "Laboriosam ea qui aut voluptatibus neque rerum reiciendis minus eveniet sint qui optio voluptas ut."], ["location", "Franeckimouth"], ["start_time", "2024-12-20 15:56:56.241748"], ["end_time", "2025-01-27 17:50:18.849971"], ["status", "cancelled"], ["user_id", 25], ["created_at", "2024-12-04 18:42:00.652827"], ["updated_at", "2024-12-04 18:42:00.652827"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Voluptas optio illum animi molestiae praesentium ducimus architecto aut omnis."], ["flagged_at", "2025-01-09 02:00:56.689429"], ["user_id", 25], ["event_id", 66], ["created_at", "2024-12-04 18:42:00.656017"], ["updated_at", "2024-12-04 18:42:00.656017"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 66]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Molestiae reprehenderit aut quisquam et eaque ut totam quos consequatur."], ["flagged_at", "2025-01-13 08:39:07.463930"], ["user_id", 25], ["event_id", 66], ["created_at", "2024-12-04 18:42:00.660058"], ["updated_at", "2024-12-04 18:42:00.660058"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 66]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 79"], ["description", "Quod harum nulla aut quo ut animi quia illo ipsam odit dolorem est beatae et."], ["location", "East Troy"], ["start_time", "2025-01-02 06:23:26.150252"], ["end_time", "2025-01-07 00:31:16.559521"], ["status", "completed"], ["user_id", 26], ["created_at", "2024-12-04 18:42:00.664208"], ["updated_at", "2024-12-04 18:42:00.664208"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Eveniet voluptas quo rerum harum nulla maiores dolores quis placeat."], ["flagged_at", "2025-01-05 12:15:58.406431"], ["user_id", 26], ["event_id", 67], ["created_at", "2024-12-04 18:42:00.667481"], ["updated_at", "2024-12-04 18:42:00.667481"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 67]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Quasi quia blanditiis voluptatibus sunt maxime nisi quia asperiores dolorem."], ["flagged_at", "2025-01-05 23:55:46.665407"], ["user_id", 26], ["event_id", 67], ["created_at", "2024-12-04 18:42:00.671471"], ["updated_at", "2024-12-04 18:42:00.671471"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 67]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 80"], ["description", "Autem ipsa quidem nihil quam expedita ut cupiditate ducimus eveniet fugiat sed error aliquid ipsam."], ["location", "East Sau"], ["start_time", "2024-12-11 12:06:05.299178"], ["end_time", "2025-01-18 02:53:18.013166"], ["status", "completed"], ["user_id", 26], ["created_at", "2024-12-04 18:42:00.675501"], ["updated_at", "2024-12-04 18:42:00.675501"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Reiciendis placeat ipsam corporis rerum sint ea iste nihil earum."], ["flagged_at", "2024-12-24 09:33:53.609407"], ["user_id", 26], ["event_id", 68], ["created_at", "2024-12-04 18:42:00.678503"], ["updated_at", "2024-12-04 18:42:00.678503"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 68]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Et consequatur quis dolor ad adipisci soluta incidunt maiores necessitatibus."], ["flagged_at", "2024-12-28 11:48:07.859892"], ["user_id", 26], ["event_id", 68], ["created_at", "2024-12-04 18:42:00.683415"], ["updated_at", "2024-12-04 18:42:00.683415"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 68]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 81"], ["description", "Sit tempora blanditiis placeat esse aut reprehenderit doloribus odit officiis fuga dicta vel delectus ducimus."], ["location", "Maybellbury"], ["start_time", "2025-01-01 10:30:13.538279"], ["end_time", "2025-01-20 17:24:15.828015"], ["status", "completed"], ["user_id", 26], ["created_at", "2024-12-04 18:42:00.687744"], ["updated_at", "2024-12-04 18:42:00.687744"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Possimus dolores ea aut inventore quia alias voluptas et omnis."], ["flagged_at", "2025-01-07 08:56:03.429929"], ["user_id", 26], ["event_id", 69], ["created_at", "2024-12-04 18:42:00.691017"], ["updated_at", "2024-12-04 18:42:00.691017"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 69]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (1.0ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Facere voluptatem quaerat velit omnis sint rerum a sunt cupiditate."], ["flagged_at", "2025-01-14 11:55:21.210433"], ["user_id", 26], ["event_id", 69], ["created_at", "2024-12-04 18:42:00.694949"], ["updated_at", "2024-12-04 18:42:00.694949"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 69]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 82"], ["description", "Optio cupiditate nihil architecto quis est consequatur asperiores voluptatibus possimus excepturi soluta deleniti tempora ab."], ["location", "Lake Wanetta"], ["start_time", "2024-12-28 03:08:07.602222"], ["end_time", "2025-01-06 11:29:53.799677"], ["status", "scheduled"], ["user_id", 27], ["created_at", "2024-12-04 18:42:00.699306"], ["updated_at", "2024-12-04 18:42:00.699306"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Excepturi ullam a officia quia quis molestiae ipsam quidem harum."], ["flagged_at", "2025-01-01 21:20:00.462521"], ["user_id", 27], ["event_id", 70], ["created_at", "2024-12-04 18:42:00.702559"], ["updated_at", "2024-12-04 18:42:00.702559"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 70]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Fugit ea labore tempore totam ducimus similique reprehenderit doloremque ut."], ["flagged_at", "2025-01-04 17:32:41.649890"], ["user_id", 27], ["event_id", 70], ["created_at", "2024-12-04 18:42:00.706485"], ["updated_at", "2024-12-04 18:42:00.706485"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 70]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 83"], ["description", "Vitae ipsa ut ex dolor aut voluptatum tempore rem nihil quidem quas aspernatur laboriosam ut."], ["location", "South Tyree"], ["start_time", "2024-12-30 18:35:15.366969"], ["end_time", "2025-01-05 18:32:28.082488"], ["status", "scheduled"], ["user_id", 27], ["created_at", "2024-12-04 18:42:00.710743"], ["updated_at", "2024-12-04 18:42:00.710743"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Eius et enim quis est velit nemo doloremque voluptatem ab."], ["flagged_at", "2025-01-04 05:57:24.130474"], ["user_id", 27], ["event_id", 71], ["created_at", "2024-12-04 18:42:00.713818"], ["updated_at", "2024-12-04 18:42:00.713818"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 71]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Eum est illo doloremque id molestiae dolores aut velit alias."], ["flagged_at", "2024-12-30 22:46:16.118120"], ["user_id", 27], ["event_id", 71], ["created_at", "2024-12-04 18:42:00.717898"], ["updated_at", "2024-12-04 18:42:00.717898"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 71]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 84"], ["description", "Iusto dolor consequatur qui ut illum molestiae veniam numquam soluta dolorem sed magni voluptas asperiores."], ["location", "South Federico"], ["start_time", "2024-12-26 17:12:47.052403"], ["end_time", "2025-01-05 06:26:52.942908"], ["status", "scheduled"], ["user_id", 27], ["created_at", "2024-12-04 18:42:00.722011"], ["updated_at", "2024-12-04 18:42:00.722011"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Quis architecto et voluptatem placeat earum enim quisquam laborum deleniti."], ["flagged_at", "2024-12-31 03:32:51.934543"], ["user_id", 27], ["event_id", 72], ["created_at", "2024-12-04 18:42:00.724877"], ["updated_at", "2024-12-04 18:42:00.724877"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 72]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Sint occaecati est consequatur vel nisi quaerat labore ab odio."], ["flagged_at", "2025-01-01 07:33:55.930154"], ["user_id", 27], ["event_id", 72], ["created_at", "2024-12-04 18:42:00.729881"], ["updated_at", "2024-12-04 18:42:00.729881"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 72]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (1.1ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 85"], ["description", "Quis veniam neque iure esse nam nesciunt sequi earum quam et ut veritatis harum modi."], ["location", "Port Homer"], ["start_time", "2024-12-23 18:39:33.925842"], ["end_time", "2025-01-08 20:02:15.390058"], ["status", "cancelled"], ["user_id", 28], ["created_at", "2024-12-04 18:42:00.734496"], ["updated_at", "2024-12-04 18:42:00.734496"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.9ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Fugit deserunt non est distinctio esse consequuntur nisi ut error."], ["flagged_at", "2025-01-07 07:28:08.722290"], ["user_id", 28], ["event_id", 73], ["created_at", "2024-12-04 18:42:00.738656"], ["updated_at", "2024-12-04 18:42:00.738656"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 73]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (1.0ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Consequuntur ut voluptates dicta quasi eum deserunt iste provident tempore."], ["flagged_at", "2024-12-30 15:26:52.729124"], ["user_id", 28], ["event_id", 73], ["created_at", "2024-12-04 18:42:00.743303"], ["updated_at", "2024-12-04 18:42:00.743303"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 73]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 86"], ["description", "Ipsa quas in quibusdam id et eius minima quod facere dolorem rerum officia sint doloribus."], ["location", "West Jerrellberg"], ["start_time", "2024-12-23 10:13:20.635940"], ["end_time", "2025-01-25 15:12:53.238735"], ["status", "cancelled"], ["user_id", 28], ["created_at", "2024-12-04 18:42:00.747745"], ["updated_at", "2024-12-04 18:42:00.747745"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Ut voluptate magni incidunt qui distinctio quasi sint sit amet."], ["flagged_at", "2024-12-31 15:18:36.181461"], ["user_id", 28], ["event_id", 74], ["created_at", "2024-12-04 18:42:00.750970"], ["updated_at", "2024-12-04 18:42:00.750970"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 74]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Iste dolore laborum provident natus sint facere qui cum dignissimos."], ["flagged_at", "2025-01-03 12:47:55.135094"], ["user_id", 28], ["event_id", 74], ["created_at", "2024-12-04 18:42:00.755000"], ["updated_at", "2024-12-04 18:42:00.755000"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 74]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 87"], ["description", "Magni odit vel sit sit dolorem veniam repellat provident et quia minima fuga qui odio."], ["location", "Deaneshire"], ["start_time", "2024-12-27 13:22:39.107783"], ["end_time", "2025-01-15 13:13:30.213519"], ["status", "scheduled"], ["user_id", 28], ["created_at", "2024-12-04 18:42:00.759277"], ["updated_at", "2024-12-04 18:42:00.759277"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Corporis quo adipisci rerum dolorum explicabo quia voluptatem exercitationem impedit."], ["flagged_at", "2025-01-14 10:48:29.165921"], ["user_id", 28], ["event_id", 75], ["created_at", "2024-12-04 18:42:00.762259"], ["updated_at", "2024-12-04 18:42:00.762259"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 75]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Ea vitae ut nam est laudantium sint voluptatibus unde ducimus."], ["flagged_at", "2024-12-30 23:53:36.460863"], ["user_id", 28], ["event_id", 75], ["created_at", "2024-12-04 18:42:00.766400"], ["updated_at", "2024-12-04 18:42:00.766400"]]
+  [1m[36mEvent Update All (0.1ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 75]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 88"], ["description", "Excepturi natus sed ullam sit dolor voluptates eum laudantium est ducimus placeat exercitationem et amet."], ["location", "Port Randellside"], ["start_time", "2024-12-08 15:15:31.240592"], ["end_time", "2025-01-09 21:46:08.306530"], ["status", "cancelled"], ["user_id", 29], ["created_at", "2024-12-04 18:42:00.770538"], ["updated_at", "2024-12-04 18:42:00.770538"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Ea eveniet recusandae enim soluta tenetur maiores culpa ratione dolores."], ["flagged_at", "2024-12-30 06:47:20.650325"], ["user_id", 29], ["event_id", 76], ["created_at", "2024-12-04 18:42:00.773475"], ["updated_at", "2024-12-04 18:42:00.773475"]]
+  [1m[36mEvent Update All (0.1ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 76]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Dolorem molestias autem nemo pariatur alias quis labore doloribus ullam."], ["flagged_at", "2024-12-30 20:10:33.251630"], ["user_id", 29], ["event_id", 76], ["created_at", "2024-12-04 18:42:00.778972"], ["updated_at", "2024-12-04 18:42:00.778972"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 76]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 89"], ["description", "Earum aliquid et deleniti beatae error consectetur porro quis aut totam aut debitis consequuntur temporibus."], ["location", "Linneaview"], ["start_time", "2024-12-31 22:45:56.351243"], ["end_time", "2025-01-06 04:55:26.136833"], ["status", "cancelled"], ["user_id", 29], ["created_at", "2024-12-04 18:42:00.783655"], ["updated_at", "2024-12-04 18:42:00.783655"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.9ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Voluptates assumenda quo non occaecati iste numquam sunt nostrum dolores."], ["flagged_at", "2025-01-03 00:44:01.289876"], ["user_id", 29], ["event_id", 77], ["created_at", "2024-12-04 18:42:00.787498"], ["updated_at", "2024-12-04 18:42:00.787498"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 77]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Nihil non reiciendis et incidunt qui laborum voluptatibus excepturi accusamus."], ["flagged_at", "2025-01-02 16:58:40.949526"], ["user_id", 29], ["event_id", 77], ["created_at", "2024-12-04 18:42:00.791683"], ["updated_at", "2024-12-04 18:42:00.791683"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 77]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 90"], ["description", "Deleniti et ex quaerat itaque autem voluptatem recusandae dolorem corrupti totam minus quam aperiam laudantium."], ["location", "Leoniaport"], ["start_time", "2025-01-02 11:38:20.202851"], ["end_time", "2025-01-05 00:18:32.711580"], ["status", "completed"], ["user_id", 29], ["created_at", "2024-12-04 18:42:00.796384"], ["updated_at", "2024-12-04 18:42:00.796384"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Quisquam consectetur qui modi quod consequuntur rem et vel cum."], ["flagged_at", "2025-01-04 07:17:27.139035"], ["user_id", 29], ["event_id", 78], ["created_at", "2024-12-04 18:42:00.800291"], ["updated_at", "2024-12-04 18:42:00.800291"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 78]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Beatae sint exercitationem voluptatem repellendus temporibus quia quam et qui."], ["flagged_at", "2025-01-02 14:47:08.008591"], ["user_id", 29], ["event_id", 78], ["created_at", "2024-12-04 18:42:00.804805"], ["updated_at", "2024-12-04 18:42:00.804805"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 78]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.9ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 91"], ["description", "Vero quia rerum voluptate omnis ducimus sed deleniti nihil doloremque commodi error qui deserunt impedit."], ["location", "New Bradley"], ["start_time", "2024-12-05 22:49:23.089214"], ["end_time", "2025-01-05 11:24:05.421393"], ["status", "scheduled"], ["user_id", 30], ["created_at", "2024-12-04 18:42:00.809096"], ["updated_at", "2024-12-04 18:42:00.809096"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Eos voluptatem et cupiditate ipsa accusantium inventore exercitationem occaecati sit."], ["flagged_at", "2024-12-14 16:11:13.549105"], ["user_id", 30], ["event_id", 79], ["created_at", "2024-12-04 18:42:00.812248"], ["updated_at", "2024-12-04 18:42:00.812248"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 79]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Quibusdam quis aliquam reprehenderit facere distinctio ipsam odit ex eos."], ["flagged_at", "2024-12-30 22:07:46.651276"], ["user_id", 30], ["event_id", 79], ["created_at", "2024-12-04 18:42:00.816443"], ["updated_at", "2024-12-04 18:42:00.816443"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 79]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 92"], ["description", "Praesentium iusto sed sapiente ut officia molestiae iste nam enim reiciendis ut rem ullam minus."], ["location", "Freemanberg"], ["start_time", "2024-12-06 05:15:53.418037"], ["end_time", "2025-01-07 05:03:00.334000"], ["status", "cancelled"], ["user_id", 30], ["created_at", "2024-12-04 18:42:00.820494"], ["updated_at", "2024-12-04 18:42:00.820494"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Eaque inventore vitae a maxime at ea eum sit et."], ["flagged_at", "2025-01-01 03:06:51.354993"], ["user_id", 30], ["event_id", 80], ["created_at", "2024-12-04 18:42:00.823363"], ["updated_at", "2024-12-04 18:42:00.823363"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 80]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Asperiores odio sit voluptates sunt porro omnis ea ex amet."], ["flagged_at", "2024-12-09 08:29:22.510087"], ["user_id", 30], ["event_id", 80], ["created_at", "2024-12-04 18:42:00.828258"], ["updated_at", "2024-12-04 18:42:00.828258"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 80]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 93"], ["description", "Sed ut aperiam exercitationem pariatur facilis voluptatibus quibusdam aut et quo quam nihil placeat provident."], ["location", "Port Carolabury"], ["start_time", "2024-12-21 06:25:21.166085"], ["end_time", "2025-01-08 05:39:37.435092"], ["status", "completed"], ["user_id", 30], ["created_at", "2024-12-04 18:42:00.832621"], ["updated_at", "2024-12-04 18:42:00.832621"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Molestias autem quo dolorem et ut aut ipsum est est."], ["flagged_at", "2024-12-26 08:45:22.557790"], ["user_id", 30], ["event_id", 81], ["created_at", "2024-12-04 18:42:00.835841"], ["updated_at", "2024-12-04 18:42:00.835841"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 81]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Dolore aut in omnis corrupti recusandae reiciendis eveniet eum repudiandae."], ["flagged_at", "2024-12-31 03:19:57.640435"], ["user_id", 30], ["event_id", 81], ["created_at", "2024-12-04 18:42:00.839639"], ["updated_at", "2024-12-04 18:42:00.839639"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 81]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 94"], ["description", "Ut aut quaerat et esse temporibus consequatur iusto architecto dolor eos vero rerum incidunt magnam."], ["location", "South Trey"], ["start_time", "2024-12-12 04:26:10.489109"], ["end_time", "2025-01-05 13:36:07.954820"], ["status", "completed"], ["user_id", 31], ["created_at", "2024-12-04 18:42:00.844243"], ["updated_at", "2024-12-04 18:42:00.844243"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Ipsam reprehenderit at dolore tempora aut beatae ad aperiam sunt."], ["flagged_at", "2024-12-28 22:49:00.750029"], ["user_id", 31], ["event_id", 82], ["created_at", "2024-12-04 18:42:00.847300"], ["updated_at", "2024-12-04 18:42:00.847300"]]
+  [1m[36mEvent Update All (0.2ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 82]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Provident possimus ea voluptas dolor officia voluptatem voluptatem doloribus dolorum."], ["flagged_at", "2024-12-29 18:47:49.123725"], ["user_id", 31], ["event_id", 82], ["created_at", "2024-12-04 18:42:00.851325"], ["updated_at", "2024-12-04 18:42:00.851325"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 82]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 95"], ["description", "Sed est ut dignissimos deserunt aut velit recusandae facilis et minus in nobis pariatur aut."], ["location", "Ferrystad"], ["start_time", "2024-12-14 02:55:39.649313"], ["end_time", "2025-01-23 09:01:43.593991"], ["status", "scheduled"], ["user_id", 31], ["created_at", "2024-12-04 18:42:00.855468"], ["updated_at", "2024-12-04 18:42:00.855468"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Amet enim at adipisci non dolorem facilis dolor saepe autem."], ["flagged_at", "2025-01-13 17:17:38.480493"], ["user_id", 31], ["event_id", 83], ["created_at", "2024-12-04 18:42:00.858377"], ["updated_at", "2024-12-04 18:42:00.858377"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 83]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Cupiditate fugit facilis qui laboriosam qui dolore aut quasi placeat."], ["flagged_at", "2024-12-23 09:58:29.372076"], ["user_id", 31], ["event_id", 83], ["created_at", "2024-12-04 18:42:00.862570"], ["updated_at", "2024-12-04 18:42:00.862570"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 83]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 96"], ["description", "Repudiandae aut voluptatum officia aut aut ut autem nostrum modi dolor nobis nam sed quia."], ["location", "Lake Particiastad"], ["start_time", "2024-12-28 22:51:13.959861"], ["end_time", "2025-01-20 00:36:59.651397"], ["status", "scheduled"], ["user_id", 31], ["created_at", "2024-12-04 18:42:00.866654"], ["updated_at", "2024-12-04 18:42:00.866654"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Sunt eius voluptas ducimus consequatur cupiditate et corrupti laudantium et."], ["flagged_at", "2025-01-15 02:21:24.181796"], ["user_id", 31], ["event_id", 84], ["created_at", "2024-12-04 18:42:00.869519"], ["updated_at", "2024-12-04 18:42:00.869519"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 84]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Nobis id corporis ea sint voluptas distinctio quod similique voluptates."], ["flagged_at", "2025-01-18 03:31:53.741831"], ["user_id", 31], ["event_id", 84], ["created_at", "2024-12-04 18:42:00.874323"], ["updated_at", "2024-12-04 18:42:00.874323"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 84]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 97"], ["description", "Laboriosam voluptas eos commodi eius nostrum consequatur at vel saepe officia aut in illum facilis."], ["location", "Maggiostad"], ["start_time", "2024-12-31 00:42:41.726472"], ["end_time", "2025-01-15 03:48:51.337746"], ["status", "cancelled"], ["user_id", 32], ["created_at", "2024-12-04 18:42:00.878559"], ["updated_at", "2024-12-04 18:42:00.878559"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Quas odit molestias tenetur quidem eaque beatae magni possimus voluptas."], ["flagged_at", "2025-01-03 09:01:29.734871"], ["user_id", 32], ["event_id", 85], ["created_at", "2024-12-04 18:42:00.881722"], ["updated_at", "2024-12-04 18:42:00.881722"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 85]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (1.0ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Suscipit minus sed est et veniam sunt corporis voluptatum eveniet."], ["flagged_at", "2025-01-08 16:46:27.969120"], ["user_id", 32], ["event_id", 85], ["created_at", "2024-12-04 18:42:00.885851"], ["updated_at", "2024-12-04 18:42:00.885851"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 85]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 98"], ["description", "Commodi nihil eligendi molestiae mollitia et neque minima quod temporibus laborum totam amet possimus id."], ["location", "Vonton"], ["start_time", "2024-12-18 21:45:12.886286"], ["end_time", "2025-01-04 19:41:17.483654"], ["status", "scheduled"], ["user_id", 32], ["created_at", "2024-12-04 18:42:00.890070"], ["updated_at", "2024-12-04 18:42:00.890070"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Debitis repudiandae porro alias omnis doloribus harum ullam in aut."], ["flagged_at", "2024-12-22 09:34:48.299510"], ["user_id", 32], ["event_id", 86], ["created_at", "2024-12-04 18:42:00.893277"], ["updated_at", "2024-12-04 18:42:00.893277"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 86]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.8ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Qui illum ab qui harum vel voluptatem et aut ut."], ["flagged_at", "2024-12-23 20:54:00.065241"], ["user_id", 32], ["event_id", 86], ["created_at", "2024-12-04 18:42:00.897242"], ["updated_at", "2024-12-04 18:42:00.897242"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 86]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 99"], ["description", "Error hic qui omnis cupiditate ipsum aut ratione sit perspiciatis doloribus voluptas eligendi nemo numquam."], ["location", "Bobbiefurt"], ["start_time", "2025-01-01 13:17:18.831698"], ["end_time", "2025-01-22 05:44:44.561367"], ["status", "cancelled"], ["user_id", 32], ["created_at", "2024-12-04 18:42:00.901475"], ["updated_at", "2024-12-04 18:42:00.901475"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Qui sint cumque veniam alias placeat iure repellendus tempore dolor."], ["flagged_at", "2025-01-08 04:46:40.317570"], ["user_id", 32], ["event_id", 87], ["created_at", "2024-12-04 18:42:00.904404"], ["updated_at", "2024-12-04 18:42:00.904404"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 87]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Sit corrupti qui quis et consequatur earum itaque sapiente cupiditate."], ["flagged_at", "2025-01-16 02:53:37.530309"], ["user_id", 32], ["event_id", 87], ["created_at", "2024-12-04 18:42:00.908534"], ["updated_at", "2024-12-04 18:42:00.908534"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 87]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 100"], ["description", "Aliquid laboriosam illum est temporibus dolores est vitae ipsam qui quo ea eos quod provident."], ["location", "Toddland"], ["start_time", "2025-01-02 17:25:40.750794"], ["end_time", "2025-01-21 23:26:00.046087"], ["status", "cancelled"], ["user_id", 33], ["created_at", "2024-12-04 18:42:00.912574"], ["updated_at", "2024-12-04 18:42:00.912574"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (1.7ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Iusto consequatur molestias est dicta aut similique rerum enim harum."], ["flagged_at", "2025-01-21 11:12:03.845616"], ["user_id", 33], ["event_id", 88], ["created_at", "2024-12-04 18:42:00.915395"], ["updated_at", "2024-12-04 18:42:00.915395"]]
+  [1m[36mEvent Update All (0.1ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 88]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.9ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Minus est ut molestias exercitationem inventore neque aut qui optio."], ["flagged_at", "2025-01-21 10:33:38.154980"], ["user_id", 33], ["event_id", 88], ["created_at", "2024-12-04 18:42:00.920547"], ["updated_at", "2024-12-04 18:42:00.920547"]]
+  [1m[36mEvent Update All (0.1ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 88]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (2.6ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 101"], ["description", "Aspernatur consequuntur qui repudiandae animi temporibus qui sit est repellendus provident veniam itaque facere ut."], ["location", "Tamarfurt"], ["start_time", "2024-12-10 04:54:18.193672"], ["end_time", "2025-01-05 12:45:44.471366"], ["status", "completed"], ["user_id", 33], ["created_at", "2024-12-04 18:42:00.926163"], ["updated_at", "2024-12-04 18:42:00.926163"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.9ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "0"], ["description", "Voluptate molestiae quasi voluptatem illum architecto aut sit accusamus nemo."], ["flagged_at", "2024-12-22 11:21:23.633503"], ["user_id", 33], ["event_id", 89], ["created_at", "2024-12-04 18:42:00.932663"], ["updated_at", "2024-12-04 18:42:00.932663"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 89]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.9ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "2"], ["description", "Nobis et quibusdam magni et voluptatibus et consequatur ea ab."], ["flagged_at", "2024-12-10 07:26:00.621005"], ["user_id", 33], ["event_id", 89], ["created_at", "2024-12-04 18:42:00.937438"], ["updated_at", "2024-12-04 18:42:00.937438"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 89]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "location", "start_time", "end_time", "status", "user_id", "created_at", "updated_at", "flags_count") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Event 102"], ["description", "Sed praesentium ut quis veritatis tenetur eos repellendus et autem totam natus nihil itaque minus."], ["location", "South Laurel"], ["start_time", "2024-12-21 18:23:43.709608"], ["end_time", "2025-01-18 08:56:55.785393"], ["status", "scheduled"], ["user_id", 33], ["created_at", "2024-12-04 18:42:00.942131"], ["updated_at", "2024-12-04 18:42:00.942131"], ["flags_count", 0]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (1.2ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "1"], ["description", "Iure voluptatem molestiae sapiente quisquam quia sequi nam quidem et."], ["flagged_at", "2025-01-01 05:58:49.934417"], ["user_id", 33], ["event_id", 90], ["created_at", "2024-12-04 18:42:00.946084"], ["updated_at", "2024-12-04 18:42:00.946084"]]
+  [1m[36mEvent Update All (0.1ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 90]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFlag Create (0.9ms)[0m  [1m[32mINSERT INTO "flags" ("reason", "description", "flagged_at", "user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["reason", "3"], ["description", "Explicabo nisi debitis nulla architecto corporis alias aliquam molestiae sit."], ["flagged_at", "2024-12-29 09:08:21.222299"], ["user_id", 33], ["event_id", 90], ["created_at", "2024-12-04 18:42:00.951626"], ["updated_at", "2024-12-04 18:42:00.951626"]]
+  [1m[36mEvent Update All (0.0ms)[0m  [1m[33mUPDATE "events" SET "flags_count" = COALESCE("flags_count", 0) + ? WHERE "events"."id" = ?[0m  [["flags_count", 1], ["id", 90]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/events" for 192.168.65.1 at 2024-12-04 18:42:09 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/_event.html.erb (Duration: 146.5ms | Allocations: 23513)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.8ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.7ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.9ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.6ms | Allocations: 959)
+  Rendered events/_event.html.erb (Duration: 0.5ms | Allocations: 959)
+  Rendered events/index.html.erb within layouts/application (Duration: 196.0ms | Allocations: 66043)
+  Rendered layout layouts/application.html.erb (Duration: 200.3ms | Allocations: 67630)
+Completed 200 OK in 516ms (Views: 198.1ms | ActiveRecord: 6.4ms | Allocations: 356486)
+
+
+Started GET "/users/sign_up" for 192.168.65.1 at 2024-12-04 18:42:16 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 17.9ms | Allocations: 3256)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 3932)
+Completed 200 OK in 68ms (Views: 24.5ms | ActiveRecord: 1.4ms | Allocations: 12779)
+
+

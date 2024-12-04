@@ -4,14 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
     has_many :events, dependent: :destroy
-    has_many :events, dependent: :destroy
+    has_many :flags, dependent: :destroy
 
     # validates :email, presence: true, uniqueness: { case_sensitive: false }
     # validate :email_format  # Required Format
-    # before_save :downcase_email
+    before_validation :downcase_email, if: :email_changed?
 
-    devise :database_authenticatable, :registerable,
-            :recoverable, :rememberable, :validatable
 
     private
 

@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
         # parameters allowed during sign up and updates
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :user_type, :college_name])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :user_type, :college_name])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :user_type, :college_name])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:full_name, :user_type, :college_name])
     end
 
     def after_sign_out_path_for(resource_or_scope)
