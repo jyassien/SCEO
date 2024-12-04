@@ -56,26 +56,31 @@
       </div>
 
       <div class="my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="button">
-          <a class="nav-link" href="/users/sign_in">Sign In</a>
-        </button>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="button">
-          <a class="nav-link" href="/users/sign_up">Sign Up</a>
-        </button>
+        
+        <% if user_signed_in? %>
+          <div>
+            <button class="btn btn-success fw-bold text-white my-2 my-sm-0" type="button">
+              <%= current_user.email %>
+            </button>
+            <button class="btn btn-outline-warning my-2 my-sm-0" type="button">
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+            </button>
+          </div>
+        <% else %>
+        <div>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+            <%= link_to "Sign In", new_user_session_path %>
+          </button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+            <%= link_to "Sign Up", new_user_session_path %>
+          </button>
+        </div>
+      <% end %>
+
       </div>
     </nav>
     <main class="px-3">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
-      <% if user_signed_in? %>
-          <p>
-              Signed in as <%= current_user.email %> |
-              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-          </p>
-      <% else %>
-          <%= link_to "Sign In", new_user_session_path %>
-      <% end %>
+      
 
       <%= yield %></main>
       <footer
