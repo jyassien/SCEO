@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 require 'faker'
 require 'open-uri'
 
@@ -23,9 +14,9 @@ VALID_REASONS = ["Inappropriate Content", "Spam", "Misleading Information", "Off
   user = User.create!(
     username: "user#{i + 1}",
     email: "user#{i + 1}@msudenver.edu", 
-    password: "password",  c
-    user_type: ["admin", "professor", "student"].sample,  c
-    college_name: Faker::University.name,  c
+    password: "password", 
+    user_type: ["admin", "professor", "student"].sample, 
+    college_name: Faker::University.name
   )
 
   # Create 3 events for each user
@@ -38,13 +29,13 @@ VALID_REASONS = ["Inappropriate Content", "Spam", "Misleading Information", "Off
       end_time: Faker::Time.between(from: DateTime.now + 1.month, to: DateTime.now + 2.months),
       status: ["scheduled", "completed", "cancelled"].sample,  
       user: user,  
-      flags_count: 0, 
+      flags_count: 0
     )
 
     # Create 2 flags for each event
     2.times do
       Flag.create!(
-        reason: [:inappropriate, :illegal, :safety_concern, :other].sample, 
+        reason: ["inappropriate", "illegal", "safety_concern", "other"].sample, 
         description: Faker::Lorem.sentence(word_count: 10),
         flagged_at: Faker::Time.between(from: event.start_time, to: event.end_time),
         user: user,  
