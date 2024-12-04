@@ -3,8 +3,12 @@
 <%= render @user %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+  <div class="d-flex justify-content-end gap-3 me-5 mb-5">
+    <%= link_to "< Return", users_path,  class: "btn btn-outline-info text-success fw-bold px-3",  style:"color: white; text-decoration: none; border: solid 2px;" %>
+    <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-warning text-white fw-bold px-3" %>
+  </div>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+<div class="w-100 d-flex mb-3  d-flex justify-content-end">
+  <%= button_to "Permanently delete account", @user, method: :delete , class: "btn btn-danger text-white fw-bold px-3 me-5 mt-4 mb-3 ms-auto"%>
+</div>
 </div>

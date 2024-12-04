@@ -54,10 +54,10 @@
         <% if user_signed_in? %>
           <div>
             <button class="btn btn-success fw-bold text-white my-2 my-sm-0" type="button">
-              <a class="nav-link" href="/users"><%= current_user.email %></a>
+              <a class="nav-link" href="/users"><%= current_user.full_name %></a>
             </button>
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="button">
-              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+            <button class="btn btn-outline-warning my-2 my-sm-0" style="border: 2px solid; " type="button">
+              <%= link_to "Sign Out", destroy_user_session_path,  method: :delete  , style:"color: orange; font-weight: bold; text-decoration: none;" %>
             </button>
           </div>
         <% else %>
