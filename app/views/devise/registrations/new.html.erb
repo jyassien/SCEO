@@ -1,29 +1,41 @@
-<h2>Sign up</h2>
+<%= form_with(model: resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+  <% if resource.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% resource.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div>
+    <%= form.label :username, style: "display: block" %>
+    <%= form.text_field :username, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div>
+    <%= form.label :user_type, style: "display: block" %>
+    <%= form.select :user_type, ["admin", "professor", "student"], {}, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :college_name, style: "display: block" %>
+    <%= form.text_field :college_name, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Sign Up", class: "btn btn-primary" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
         def after_sign_in_path_for(resource)
          # Redirect to the user's profile after log in using devise 
-            student_path(current_student) # Redirect to the logged-in student's profile
+            user_path(current_user) 
         end
 
         def after_sign_in_path_up(resource)
