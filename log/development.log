@@ -12772,3 +12772,20 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 53ms (Views: 35.0ms | ActiveRecord: 10.2ms | Allocations: 10329)
 
 
+Started GET "/users" for 192.168.65.1 at 2024-12-04 16:52:16 +0000
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 129.9ms | Allocations: 20062)
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 238)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 236)
+  Rendered users/index.html.erb within layouts/application (Duration: 157.3ms | Allocations: 21999)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:60
+  Rendered layout layouts/application.html.erb (Duration: 163.9ms | Allocations: 23121)
+Completed 200 OK in 180ms (Views: 175.5ms | ActiveRecord: 1.2ms | Allocations: 23683)
+
+
