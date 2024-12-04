@@ -9,33 +9,38 @@
       </ul>
     </div>
   <% end %>
-
+<div class="form-wrapper d-flex flex-column my-5 py-5 px-3 shadow-lg " style="background-color: #b8f0f5; border-radius: 20px;">
+  <div class="fs-4 fw-bolder d-flex justify-content-between ms-3 w-50">  
   <div>
-    <%= form.label :full_name, style: "display: block" %>
-    <%= form.text_field :full_name, class: "form-control" %>
-  </div>
+    <div class="mt-2">
+      <%= form.label :full_name, style: "display: block" %>
+      <%= form.text_field :full_name, class: "form-control mt-1", style: "width: 140%;" %>
+    </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, class: "form-control" %>
-  </div>
-
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, class: "form-control" %>
-  </div>
-
-  <div>
+  <div class="mt-2">
     <%= form.label :user_type, style: "display: block" %>
-    <%= form.select :user_type, ["admin", "professor", "student"], {}, class: "form-control" %>
+    <%= form.select :user_type, ["Student", "Professor", "Admin"], {}, class: "form-control mt-1", style: "width: 140%;"  %>
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= form.label :college_name, style: "display: block" %>
-    <%= form.text_field :college_name, class: "form-control" %>
+    <%= form.text_field :college_name, class: "form-control mt-1", style: "width: 140%;" %>
   </div>
-
+</div>
   <div>
-    <%= form.submit "Sign Up", class: "btn btn-primary" %>
+    <div class="mt-2">
+      <%= form.label :email, style: "display: block" %>
+      <%= form.email_field :email, class: "form-control  mt-1  ", style: "width: 140%;"  %>
+    </div>
+    <div class="mt-2">
+      <%= form.label :password, style: "display: block" %>
+      <%= form.password_field :password, class: "form-control  mt-1  ", style: "width: 140%;"  %>
+    </div>
   </div>
+</div>
+
+<div class="w-75 ms-5 text-center">
+    <%= form.submit "Create Account", class: "btn btn-success text-white text-end fw-bold mt-2 p-2 px-5", style: "margin-left: 100px;" %>
+</div>
+</div>
 <% end %>
