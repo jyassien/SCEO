@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_05_025915) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_05_043352) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_025915) do
     t.index ["user_id"], name: "index_flags_on_user_id"
   end
 
+
   create_table "users", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -59,8 +60,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_025915) do
   add_foreign_key "events", "users"
   add_foreign_key "flags", "events"
   add_foreign_key "flags", "users"
+  add_foreign_key "registrations", "events"
+  add_foreign_key "registrations", "users"
 end
-
-
-
-# rails db:migrate
