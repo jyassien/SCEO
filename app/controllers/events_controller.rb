@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event, only: %i[ show edit update destroy register ]
 
   # GET /events or /events.json
   def index
@@ -44,6 +44,23 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+    # POST /events/:id/register
+  def register
+      if @event.user == current_user
+        redirect_to @event, alert: "You cannot register for your own event."
+        return
+      end
+  
+      if @event.registered_users_count >= @event.capacity
+        redirect_to @event, alert: "Event is fully booked."
+        return
+      end
+  
+      @event.increment!(:registered_users_count)
+  
+      redirect_to @event, notice: "You have successfully registered for the event."
   end
 
   # PATCH/PUT /events/1 or /events/1.json

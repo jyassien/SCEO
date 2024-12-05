@@ -24,10 +24,7 @@
           <%= form.text_area :description, class: "form-control", rows: 4, style: "width: 600px;" %>
         </div>
 
-        <%= form.hidden_field :event_id, value: @event.id %>  
-         
-          <%= @event.id %>
-        
+        <%= form.hidden_field :event_id, value: @event.id %>          
           <%= form.submit "Flag Event", class: "btn btn-danger text-white fw-bold px-4" %>
         </div>
       <% end %>

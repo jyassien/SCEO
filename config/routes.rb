@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :flags
   # resources :events
   resources :events do
+    member do
+      post 'register'  # Add the register route for POST action
+    end
     resources :flags, only: [:new, :create]  # Nested flags under events
   end
   resources :users
