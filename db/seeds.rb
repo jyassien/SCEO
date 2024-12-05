@@ -6,26 +6,27 @@ Flag.delete_all
 Event.delete_all
 User.delete_all
 
-# Define a list of valid reasons for flagging an event
 VALID_REASONS = ["Inappropriate Content", "Spam", "Misleading Information", "Offensive Behavior", "Duplicate Event"]
 
 # Create 10 users
 users = []
 10.times do |i|
   user = User.create!(
-    full_name: "user#{i + 1}",
+    full_name: Faker::Name.name,
     email: "user#{i + 1}@msudenver.edu",
     password: "password",
     user_type: ["admin", "professor", "student"].sample,
-    college_name: Faker::University.name
+    college_name: Faker::University.name,
+    created_events_count: 0,
+    registered_events_count: 0
   )
-  users << user # Store users to associate with events later
+  users << user
 end
 
 # Create 3 events for each user
 users.each do |user|
   3.times do |j|
-    capacity = rand(10..100) 
+    capacity = rand(10..100)
 
     event = Event.create!(
       title: "Event #{user.id * 3 + j + 1}",
@@ -36,14 +37,17 @@ users.each do |user|
       status: ["scheduled", "completed", "cancelled"].sample,
       user: user,
       creator_name: user.full_name,
-      capacity: capacity, 
-      registered_users_count: rand(0..capacity) 
+      capacity: capacity,
+      registered_users_count: 0 
     )
+
+    # Increment the created_events_count for the user
+    user.increment!(:created_events_count)
 
     # Create 2 flags for each event
     2.times do
       Flag.create!(
-        reason: VALID_REASONS.sample, # This will pick from the string values like "Inappropriate Content", "Spam", etc.
+        reason: VALID_REASONS.sample,
         description: Faker::Lorem.sentence(word_count: 10),
         flagged_at: Faker::Time.between(from: event.start_time, to: event.end_time),
         user: user,
@@ -53,8 +57,21 @@ users.each do |user|
   end
 end
 
-puts "10 users, 30 events, and 60 flags created."
+# Register users for events 
+events = Event.all
+users.each do |user|
+  5.times do
+    event = events.reject { |e| e.user_id == user.id }.sample
+    next if event.registered_users_count >= event.capacity 
 
+    # Increment the registered events count
+    user.increment!(:registered_events_count)
+    event.increment!(:registered_users_count)
+  end
+end
+
+
+puts "#{User.count} users, #{Event.count} events, and #{Flag.count} flags created."
 
 
 # rails db:seed

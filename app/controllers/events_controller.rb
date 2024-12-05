@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_event, only: %i[ show edit update destroy register ]
 
   # GET /events or /events.json
@@ -47,20 +48,32 @@ class EventsController < ApplicationController
   end
 
     # POST /events/:id/register
+  # def register
+  #     if @event.user == current_user
+  #       redirect_to @event, alert: "You cannot register for your own event."
+  #       return
+  #     end
+  
+  #     if @event.registered_users_count >= @event.capacity
+  #       redirect_to @event, alert: "Event is fully booked."
+  #       return
+  #     end
+  
+  #     @event.increment!(:registered_users_count)
+  
+  #     redirect_to @event, notice: "You have successfully registered for the event."
+  # end
   def register
-      if @event.user == current_user
-        redirect_to @event, alert: "You cannot register for your own event."
-        return
-      end
-  
-      if @event.registered_users_count >= @event.capacity
-        redirect_to @event, alert: "Event is fully booked."
-        return
-      end
-  
+    @event = Event.find(params[:id])
+
+    if @event.registered_users_count < @event.capacity && @event.user != current_user
+      current_user.increment!(:registered_events_count)
       @event.increment!(:registered_users_count)
-  
+
       redirect_to @event, notice: "You have successfully registered for the event."
+    else
+      redirect_to @event, alert: "Unable to register for this event."
+    end
   end
 
   # PATCH/PUT /events/1 or /events/1.json
@@ -103,8 +116,8 @@ class EventsController < ApplicationController
       case filter.downcase
       when "upcoming"
         Event.where("start_time > ? AND status = ?", Time.current, "scheduled").order(:start_time)
-      when "active"
-        Event.where("start_time <= ? AND end_time >= ? AND status = ?", Time.current, Time.current, "scheduled").order(:start_time)
+      when "scheduled"
+        Event.where(status: "scheduled").order(:start_time)
       when "completed"
         Event.where(status: "completed").order(:start_time)
       when "cancelled"
