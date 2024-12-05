@@ -1,51 +1,73 @@
-<%= form_with(model: event) do |form| %>
-  <% if event.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-      <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div
+  class="container d-flex mb-5 py-4 px-4 shadow-md"
+  style="background-color: #b8f0f5; border-radius: 5px">
+  <div class="row w-100 gap-1 py-2 flex-column">
+    <div
+      class="col col-lg-3 p-auto d-flex justify-content-center align-items-center"
+      style="width: 410px">
+      <%= image_tag 'default-event-picture.jpg', size: "380x320" %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="col col-lg-8 d-flex flex-column justify-content-between">
+      <div class="d-flex justify-content-between mb-3">
+        <!-- <h2 class="text-start w-100">Event Detail</h2> -->
+      </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
+      <%= form_with(model: event, class: "d-flex flex-column gap-3") do |form|
+      %> <% if event.errors.any? %>
+      <div class="alert alert-danger">
+        <h3>
+          <%= pluralize(event.errors.count, "error") %> prohibited this event
+          from being saved:
+        </h3>
+        <ul>
+          <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
 
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
-  </div>
+      <div class="form-group">
+        <%= form.label :title, class: "form-label fw-bold" %> <%=
+        form.text_field :title, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= form.label :start_time, style: "display: block" %>
-    <%= form.datetime_field :start_time %>
-  </div>
+      <div class="form-group">
+        <%= form.label :description, class: "form-label fw-bold" %> <%=
+        form.text_area :description, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= form.label :end_time, style: "display: block" %>
-    <%= form.datetime_field :end_time %>
-  </div>
+      <div class="form-group">
+        <%= form.label :location, class: "form-label fw-bold" %> <%=
+        form.text_field :location, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
+      <div class="form-group d-flex gap-3">
+        <div>
+          <%= form.label :start_time, class: "form-label fw-bold" %> <%=
+          form.datetime_field :start_time, class: "form-control" %>
+        </div>
+        <div>
+          <%= form.label :end_time, class: "form-label fw-bold" %> <%=
+          form.datetime_field :end_time, class: "form-control" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+      <div class="form-group">
+        <%= form.label :status, class: "form-label fw-bold" %> <%=
+        form.text_field :status, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= form.submit %>
+      <div class="form-group">
+        <%= form.label :user_id, class: "form-label fw-bold" %> <%=
+        form.text_field :user_id, class: "form-control" %>
+      </div>
+
+      <div class="d-flex justify-content-end mt-4">
+        <%= form.submit "Upload Event", class: "btn btn-success px-5 py-2 fw-bold" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

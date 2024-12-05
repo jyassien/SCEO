@@ -22,7 +22,7 @@
 
   <body class="">
     <nav
-      class="navbar navbar-expand-lg navbar-light bg-light w-100 border py-3 px-3">
+      class="navbar navbar-expand-lg navbar-light bg-light w-100 border p-4">
       <button
         class="navbar-toggler"
         type="button"
@@ -73,12 +73,11 @@
 
       </div>
     </nav>
-    <main class="px-3">
-      
-
-      <%= yield %></main>
+    <main class="px-3 pb-5">
+      <%= yield %>
+    </main>
       <footer
-      class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light w-100 border py-3 px-3">
+      class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light w-100 border mt-4 py-3 px-3">
       <button
         class="navbar-toggler"
         type="button"
@@ -103,10 +102,10 @@
             <a class="nav-link" href="#">Attending</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users">Profile</a>
+            <a class="nav-link" href="/flags">Flagged</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/flags">Flagged</a>
+            <a class="nav-link" href="/users">Profile</a>
           </li>
         </ul>
       </div>

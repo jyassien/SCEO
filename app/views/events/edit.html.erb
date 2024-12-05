@@ -1,10 +1,10 @@
-<h1>Editing event</h1>
+<h1 class="mt-5 ms-5 fw-bold text-success">Edit Event</h1>
 
-<%= render "form", event: @event %>
+  <div class="d-flex justify-content-between gap-3 mt-3 mb-2 mx-5  ">
+    <%= link_to "< Return", events_path,  class: "btn btn-outline-info text-success fw-bold px-4",  style:"color: white; text-decoration: none; border: solid 2px;" %>
+    <%= link_to "Show Event", @event, class: "btn btn-info text-white fw-bold px-4",  style:"color: white; text-decoration: none; border: solid 2px;"  %>
+  </div>
+<%= render "form", event: @event%>
 
-<br>
 
-<div>
-  <%= link_to "Show this event", @event %> |
-  <%= link_to "Back to events", events_path %>
-</div>
+

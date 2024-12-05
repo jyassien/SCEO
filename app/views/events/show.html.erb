@@ -2,9 +2,16 @@
 
 <%= render @event %>
 
-<div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", events_path %>
-
-  <%= button_to "Destroy this event", @event, method: :delete %>
+<div class="mx-5 mt-3" style="width: 93%; ">
+  <div class="d-flex justify-content-between">
+    <%= link_to "< Return", events_path,  class: "btn btn-outline-info text-success fw-bold px-4",  style:"color: white; text-decoration: none; border: solid 2px;" %> 
+    <div class="d-flex gap-4">
+      <%= button_to "Delete Event", @event, method: :delete, class: "btn btn-danger text-white fw-bold px-3 "  %>
+      <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-warning text-white fw-bold px-3 " %>
+    </div>
+  </div>
 </div>
+
+
+
+
