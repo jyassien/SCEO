@@ -1,7 +1,8 @@
 <h1 class="fw-bold text-success ms-5 mb-3">Create an Event</h1>
+<%= link_to "< Return", events_path,  class: "btn btn-outline-info text-success fw-bold px-4 mt-3 mb-2 ms-5",  style:"color: white; text-decoration: none; border: solid 2px;" %>
 
 <%= render "form", event: @event %>
 
 <br />
 
-<div><%= link_to "Back to events", events_path %></div>
+
