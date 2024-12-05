@@ -15,7 +15,7 @@
         <div class="d-flex align-items-center">
           <%= image_tag 'default-profile-picture.jpg', size: "50x50", class:
           "rounded-circle me-2" %>
-          <strong><%= event.creator_name %></strong> 
+          <strong class="fs-3 username"><%= event.creator_name %></strong> 
         </div>
       </div>
 
@@ -29,28 +29,34 @@
         </p>
         <p class="d-flex align-items-center fs-5">
           <%= image_tag 'time-attendance-management.png', size: "50x40", class:
-          "me-2" %> <%= event.start_time %> to <%= event.end_time %>
+          "me-2" %> 
+          <%= event.start_time.strftime("%I:%M %p %m/%d/%Y") %> to </br>
+          <%= event.end_time.strftime("%I:%M %p %m/%d/%Y") %>
         </p>
       </div>
 
       <div class="mb-4">
-        <div class="progress" style="height: 25px">
+        <div class="progress progress-bar-border" style="height: 25px">
+          <% progress_percentage = event.capacity > 0 ? (event.registered_users_count.to_f / event.capacity * 100).round : 0 %>
+
           <div
-            class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+            class="progress-bar progress-bar-striped bg-success progress-bar-animated "
             role="progressbar"
-            style="width: 25%"
-            aria-valuenow="25"
+            style="width: <%= progress_percentage %>%"
+            aria-valuenow="<%= event.registered_users_count %>"
             aria-valuemin="0"
-            aria-valuemax="100"></div>
+            aria-valuemax="<%= event.capacity %>">
+          </div>
         </div>
-        <div class="ms-2 fs-5">25/100</div>
+        <div class="ms-2 fs-5">
+          <%= "#{event.registered_users_count}/#{event.capacity}" %>
+        </div>
       </div>
 
       <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex">
           <div class="btn btn-info text-white me-2">
-            <%= link_to "Show this event", event, class: "text-white
-            text-decoration-none" %>
+            <%= link_to "Show this event", event, class: "text-white text-decoration-none" %>
           </div>
           <div class="dropdown">
             <button
@@ -61,10 +67,12 @@
               Flag This Event
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+        <% Flag::VALID_REASONS.each do |reason| %>
+          <li>
+            <%= link_to reason, new_flag_path(event_id: event.id, reason: reason), class: "dropdown-item" %>
+          </li>
+        <% end %>
+      </ul>
           </div>
         </div>
 
@@ -75,14 +83,25 @@
           </div>
           <div class="me-3 btn border-info bg-white">
             <strong class="text-info fw-bold">Registered:</strong>
-            <span class="fw-bold">25</span>
+            <span class="fw-bold"><%= event.registered_users_count %></span></span>
           </div>
           <div class="btn border-info bg-white">
             <strong class="text-info fw-bold">Flags:</strong>
-            <span class="fw-bold">13</span>
+            <span class="fw-bold"><%= event.flags_count %></span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  .username {
+    color: #014f13;
+  }
+  .progress-bar-border {
+    border: 1px solid rgb(187, 67, 3);
+    background-color: rgb(84, 163, 241);
+  }
+</style>
+

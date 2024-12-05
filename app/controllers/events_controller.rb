@@ -3,8 +3,17 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    Rails.logger.debug "Filter parameter: #{params[:filter]}"
+
+    if params[:filter].present?
+      @selected_filter = params[:filter]
+      @events = filter_events(@selected_filter)
+    else
+      @selected_filter = "All"
+      @events = Event.all
+    end
   end
+
 
   # GET /events/1 or /events/1.json
   def show
@@ -69,5 +78,24 @@ class EventsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:title, :description, :location, :start_time, :end_time, :status, :user_id)
+    end
+
+    private
+
+    def filter_events(filter)
+      case filter.downcase
+      when "upcoming"
+        Event.where("start_time > ? AND status = ?", Time.current, "scheduled").order(:start_time)
+      when "active"
+        Event.where("start_time <= ? AND end_time >= ? AND status = ?", Time.current, Time.current, "scheduled").order(:start_time)
+      when "completed"
+        Event.where(status: "completed").order(:start_time)
+      when "cancelled"
+        Event.where(status: "cancelled").order(:start_time)
+      when "no flag"
+        Event.where(flags_count: "no flag").order(:start_time)
+      else
+        Event.all.order(:start_time)
+      end
     end
 end

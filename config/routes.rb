@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :flags
-  resources :events
+  # resources :events
+  resources :events do
+    resources :flags, only: [:new, :create]  # Nested flags under events
+  end
   resources :users
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -25,6 +25,8 @@ end
 # Create 3 events for each user
 users.each do |user|
   3.times do |j|
+    capacity = rand(10..100) 
+
     event = Event.create!(
       title: "Event #{user.id * 3 + j + 1}",
       description: Faker::Lorem.sentence(word_count: 15),
@@ -33,14 +35,15 @@ users.each do |user|
       end_time: Faker::Time.between(from: DateTime.now + 1.month, to: DateTime.now + 2.months),
       status: ["scheduled", "completed", "cancelled"].sample,
       user: user,
-      creator_name: user.full_name, # Add creator_name here
-      flags_count: 0
+      creator_name: user.full_name,
+      capacity: capacity, 
+      registered_users_count: rand(0..capacity) 
     )
 
     # Create 2 flags for each event
     2.times do
       Flag.create!(
-        reason: ["inappropriate", "illegal", "safety_concern", "other"].sample,
+        reason: VALID_REASONS.sample, # This will pick from the string values like "Inappropriate Content", "Spam", etc.
         description: Faker::Lorem.sentence(word_count: 10),
         flagged_at: Faker::Time.between(from: event.start_time, to: event.end_time),
         user: user,
@@ -51,3 +54,7 @@ users.each do |user|
 end
 
 puts "10 users, 30 events, and 60 flags created."
+
+
+
+# rails db:seed

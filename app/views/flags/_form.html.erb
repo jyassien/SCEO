@@ -1,42 +1,36 @@
-<%= form_with(model: flag) do |form| %>
-  <% if flag.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(flag.errors.count, "error") %> prohibited this flag from being saved:</h2>
+<div class="container d-flex mt-4 mb-5 p-5 py-4 border shadow-lg" style="background-color: #b8f0f5; border-radius: 20px;">
+  <div class="row w-100 gap-3 py-2 flex-between">
 
-      <ul>
-        <% flag.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <div class="col col-lg-8 d-flex flex-column justify-content-between">
+      <%= form_with(model: @flag, url: event_flags_path(@event)) do |form| %>
+      <% if @flag.errors.any? %>
+          <div class="alert alert-danger">
+            <h4><%= pluralize(@flag.errors.count, "error") %> prevented this flag from being saved:</h4>
+            <ul>
+              <% @flag.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="mb-3">
+          <%= form.label :reason, class: "form-label fw-bold" %>
+          <%= form.select :reason, Flag::VALID_REASONS, {}, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :description, class: "form-label fw-bold" %>
+          <%= form.text_area :description, class: "form-control", rows: 4, style: "width: 600px;" %>
+        </div>
+
+        <%= form.hidden_field :event_id, value: @event.id %>  
+         
+          <%= @event.id %>
+        
+          <%= form.submit "Flag Event", class: "btn btn-danger text-white fw-bold px-4" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :reason, style: "display: block" %>
-    <%= form.text_field :reason %>
   </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :flagged_at, style: "display: block" %>
-    <%= form.datetime_field :flagged_at %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :event_id, style: "display: block" %>
-    <%= form.text_field :event_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

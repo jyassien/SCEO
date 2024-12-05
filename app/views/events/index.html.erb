@@ -3,20 +3,24 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1 class="fw-bold text-success ms-4">Events</h1>
   <div class="d-flex">
-    <div class="dropdown">
+    <div class="filter dropdown">
       <button
-        class="btn btn-secondary dropdown-toggle"
+        class="btn dropdown-toggle <%= @selected_filter.present? ? 'btn-primary' : 'btn-secondary' %>"
         type="button"
         data-bs-toggle="dropdown"
         aria-expanded="false">
-        Filter Events
+        <%= @selected_filter || "Filter Events" %>
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <% Event::FILTER_OPTIONS.each do |filter| %>
+          <li>
+            <%= link_to filter, events_path(filter: filter),
+                class: "dropdown-item #{'active' if filter == @selected_filter}" %>
+          </li>
+        <% end %>
       </ul>
     </div>
+    
     <div
       class="ms-2 btn btn-outline-success create-event-btn fw-bold"
       style="border: 2px solid">
@@ -27,7 +31,10 @@
 </div>
 
 <div id="events" class="events-wrapper">
-  <% @events.each do |event| %> <%= render event %> <% end %>
+  <% @events.each do |event| %> 
+   
+    <%= render 'event', event: event %> 
+  <% end %>
 </div>
 
 <style>
@@ -43,5 +50,20 @@
   }
   .events-wrapper {
     margin-bottom: 300px;
+  }
+  .filter .btn-primary {
+    background-color: #28a745;
+    color: white; 
+    border-color: #28a745;
+  }
+  
+  .filter .btn-primary:hover {
+    background-color: #218838; 
+    color: white;
+  }
+  .filter .dropdown-menu .dropdown-item.active {
+    font-weight: bold;
+    color: white;
+    background-color: #015915;
   }
 </style>

@@ -1,5 +1,5 @@
 class FlagsController < ApplicationController
-  before_action :set_flag, only: %i[ show edit update destroy ]
+  before_action :set_event, only: [:new, :create]
 
   # GET /flags or /flags.json
   def index
@@ -22,16 +22,28 @@ class FlagsController < ApplicationController
   # POST /flags or /flags.json
   def create
     @flag = Flag.new(flag_params)
+  Rails.logger.debug("Flag Params: #{@flag.inspect}") 
 
-    respond_to do |format|
-      if @flag.save
-        format.html { redirect_to @flag, notice: "Flag was successfully created." }
-        format.json { render :show, status: :created, location: @flag }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @flag.errors, status: :unprocessable_entity }
-      end
+    @flag.user = current_user
+    @flag.event = @event
+    @flag.flagged_at = Time.current
+
+
+    if @flag.save
+      redirect_to @event, notice: "Event flagged successfully."
+    else
+      redirect_to @event, alert: "There was an issue flagging the event."
     end
+
+    # respond_to do |format|
+    #   if @flag.save
+    #     format.html { redirect_to @flag, notice: "Flag was successfully created." }
+    #     format.json { render :show, status: :created, location: @flag }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @flag.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /flags/1 or /flags/1.json
@@ -63,8 +75,11 @@ class FlagsController < ApplicationController
       @flag = Flag.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def flag_params
       params.require(:flag).permit(:reason, :description, :flagged_at, :user_id, :event_id)
+    end
+
+    def set_event
+      @event = Event.find(params[:event_id])
     end
 end
