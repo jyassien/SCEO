@@ -1,26 +1,36 @@
-<div id="<%= dom_id flag %>">
-  <p>
-    <strong>Event:</strong>
-    <%= flag.event_id %>
-  </p>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Reson</th>
-        <th scope="col">Description</th>
-        <th scope="col">Flagged By</th>
-        <th scope="col">Flagged Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td><%= flag.reason %></td>
-        <td><%= flag.description %></td>
-        <td><%= flag.user_id %></td>
-        <td><%= flag.flagged_at %></td>
-      </tr>
-    </tbody>
-  </table>
+<div id="<%= dom_id flag %>" class="card shadow-sm mb-4">
+  <div class="card-header bg-info text-white">
+    <h5 class="mb-0">Flag Details for Event <%= flag.event_id %></h5>
+  </div>
+  <div class="card-body">
+    <div class="mb-3">
+      <strong>Event ID:</strong>
+      <span class="text-muted"><%= flag.event_id %></span>
+    </div>
+    
+    <h6 class="text-info">Flag Information</h6>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Description</th>
+          <th scope="col">Flagged By</th>
+          <th scope="col">Flagged Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td><%= flag.reason %></td>
+          <td><%= flag.description %></td>
+          <td><%= flag.user_id %></td>
+          <td><%= flag.flagged_at.strftime('%b %d, %Y %I:%M %p') %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer text-muted">
+    <small>Flag ID: <%= flag.id %></small>
+  </div>
 </div>

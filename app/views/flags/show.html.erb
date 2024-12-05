@@ -1,10 +1,12 @@
 <p  class="text-center fs-2 text-info"><%= notice %></p>
 
-<%= render @flag %>
+<%= render @flag if @flag.present? %>
 
-<div>
-  <%= link_to "Edit this flag", edit_flag_path(@flag) %> |
-  <%= link_to "Back to flags", flags_path %>
-
-  <%= button_to "Destroy this flag", @flag, method: :delete %>
+<div class="d-flex justify-content-between mx-4">
+  <%= link_to "< Return", flags_path, class: "btn btn-outline-success text-success me-3 fw-bold px-4",  style:"=text-decoration: none; border: solid 2px;" %>
+  <div class="d-flex gap-3">
+    <%= button_to "Destroy Flag", @flag, method: :delete, class: "btn btn-danger text-white ms-auto me-3 fw-bold px-4",  style:" text-decoration: none; border: solid 2px;" %>
+    <%= link_to "Edit Flag", edit_flag_path(@flag), class: "btn btn-warning text-white ms-auto me-3 fw-bold px-4",  style:"text-decoration: none; border: solid 2px;"  %> 
+  </div>
 </div>
+

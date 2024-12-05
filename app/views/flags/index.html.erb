@@ -5,10 +5,9 @@
 <div id="flags">
   <% @flags.each do |flag| %>
     <%= render flag %>
-    <p>
-      <%= link_to "Show this flag", flag %>
+    <p class="d-flex w-100">
+      <%= link_to "Show Flag", flag, class: "btn btn-success text-white ms-auto me-3 fw-bold px-4",  style:"color: white; text-decoration: none; border: solid 2px;" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New flag", new_flag_path %>

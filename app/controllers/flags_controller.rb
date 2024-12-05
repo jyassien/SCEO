@@ -8,6 +8,7 @@ class FlagsController < ApplicationController
 
   # GET /flags/1 or /flags/1.json
   def show
+    @flag = Flag.find(params[:id])
   end
 
   # GET /flags/new
