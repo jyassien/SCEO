@@ -1,5 +1,5 @@
 class FlagsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :new, :update] 
+  before_action :authenticate_user!, only: [:create, :destroy, :new] 
   before_action :set_event, only: [:new, :create]
 
   # GET /flags or /flags.json
@@ -24,7 +24,7 @@ class FlagsController < ApplicationController
   # POST /flags or /flags.json
   def create
     @flag = Flag.new(flag_params)
-  Rails.logger.debug("Flag Params: #{@flag.inspect}") 
+    Rails.logger.debug("Flag Params: #{@flag.inspect}") 
 
     @flag.user = current_user
     @flag.event = @event
@@ -50,6 +50,7 @@ class FlagsController < ApplicationController
 
   # PATCH/PUT /flags/1 or /flags/1.json
   def update
+    @flag = Flag.find(params[:id])
     respond_to do |format|
       if @flag.update(flag_params)
         format.html { redirect_to @flag, notice: "Flag was successfully updated." }
@@ -63,6 +64,7 @@ class FlagsController < ApplicationController
 
   # DELETE /flags/1 or /flags/1.json
   def destroy
+    @flag = Flag.find(params[:id])
     @flag.destroy!
 
     respond_to do |format|
