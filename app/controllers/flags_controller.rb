@@ -1,4 +1,5 @@
 class FlagsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :new, :update] 
   before_action :set_event, only: [:new, :create]
 
   # GET /flags or /flags.json

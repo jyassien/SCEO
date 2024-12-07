@@ -79,4 +79,3 @@ class UsersController < ApplicationController
 end
 
 
-# rspec spec/requests/users_spec.rb

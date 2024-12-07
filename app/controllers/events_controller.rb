@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :destroy, :new, :register, :update] 
   before_action :set_event, only: %i[ show edit update destroy register ]
 
   # GET /events or /events.json
