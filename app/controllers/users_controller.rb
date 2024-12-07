@@ -60,20 +60,23 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-
     # def set_user
-    #   if params[:id] == "sign_out"
-    #     redirect_to root_path
-    #   else
-    #     @user = User.find(params[:id])
-    #   end
+    #   @user = User.find(params[:id])
     # end
+
+    def set_user
+      if params[:id] == "sign_out"
+        redirect_to root_path
+      else
+        @user = User.find(params[:id])
+      end
+    end
 
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:username, :email, :password, :user_type, :college_name)
     end
 end
+
+
+# rspec spec/requests/users_spec.rb
